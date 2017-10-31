@@ -27,16 +27,17 @@
 	<div id="header">	
 	</div>
 	<div id="section1" class="section">
-		<form method="POST" style="margin-top:125px;">
+		<form method="POST" style="margin-top:125px;" onSubmit="return false;">
 			Enter your major: <br/>
-			<input type="text" name="major">
-			<input type="button" onclick="scroll1()" value="submit">
+			<input type="text" name="major" style="margin-top:5px; height:25px;">
+			<!-- <input type="button" onclick="scroll1()"> -->
 		</form>
+		<button id="button1" onclick="scroll1()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
 	</div>
 	<div id="section2" class="section">
 		<form method="POST" style="margin-left:41%;">
 			Select your graduation date: <br/>
-		<select name="grad-date">
+			<select name="grad-date" style="margin-top:5px; height:31px;">
   				<option value="20181">Spring 2018</option>
   				<option value="20183">Fall 2018</option>
   				<option value="20191">Spring 2019</option>
@@ -45,8 +46,9 @@
   				<option value="20203">Fall 2020</option>
   				<option value="20211">Spring 2021</option>
 			</select>
-			<input type="button" onclick="scroll2()" value="submit">
+			<!-- <input type="button" onclick="scroll2()" value="submit"> -->
 		</form>
+		<button id="button2" onclick="scroll2()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
 	</div>
 	<div id="section3" class="section">
 		<form method="POST">
