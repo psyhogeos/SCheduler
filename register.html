@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="login.css">
+<title>Register</title>
+<script>
+	function validate() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("GET", "regvalidate.jsp?email=" + document.register.email.value +
+				"&pw=" + document.register.pw.value + "&pw_confirm=" + document.register.pw_confirm.value, false);
+		xhttp.send();
+		if(xhttp.responseText.trim().length > 0) {
+			document.getElementById("formerror").innerHTML = xhttp.responseText;
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+
+<body>
+  <div id="outercontainer">
+    <h3 id="title">REGISTER</h3>
+    <form name="register" method="POST" action="input.jsp" onsubmit="return validate();">
+      <div class="form-row">
+        <label>Email: </label> <input type="text" name="email" />
+      </div>
+      <div class="form-row">
+        <label>Password:</label> <input type="password" name="pw" />
+      </div>
+      <div class="form-row">
+        <label>Confirm Password:</label> <input type="password" name="pw_confirm" />
+      </div>
+      <br />
+      
+      <div id="formerror"></div>
+      <div class="form-row" style="text-align:center;">
+        <button id="acct_button">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
+
+

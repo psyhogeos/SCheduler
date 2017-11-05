@@ -1,0 +1,73 @@
+@charset "ISO-8859-1";
+
+body {
+  font-family: Arial;
+  background-image: url('https://alumni.usc.edu/wp-content/uploads/2016/04/2015105_USC_Spring_2015_1529.jpg');
+  background-size: 145%;
+  background-repeat: no-repeat;
+}
+#outercontainer {
+  margin-top: 200px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(163, 37, 26, 0.7);
+  width: 600px;
+  color: white;
+}
+#outercontainer a {
+	color: #DDB318;
+}
+h3, h4 {
+  text-align: center;
+}
+.form-row {
+  margin-bottom: 10px;
+}
+label {
+  width: 220px;
+  float: left;
+  text-align: right;
+  margin-right: 10px;
+}
+.label {
+  float: none;
+  width: auto;
+}
+button {
+  width: 100px;
+  height: 40px;
+  font-size: 14px;
+  color: white;
+  background-color: #910B0B;
+  border: 0;
+  border-radius: 6px;
+}
+button:hover {
+  background: #293F50;
+  cursor: pointer;
+}
+#guest {
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  width: 13%;
+  height: 30px;
+  background-color: rgb(163, 37, 26);
+  border-radius: 5px;
+  text-decoration: none;
+  line-height: 180%;
+}
+#guest a {
+  text-decoration: none;
+  color: white;
+}
+#formerror {
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+	font-size: 12px;
+	text-align: center;
+	margin-bottom: 15px;
+}
