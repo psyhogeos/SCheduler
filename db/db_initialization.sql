@@ -7,15 +7,15 @@ CREATE TABLE Course (
 	courseID INT(11) PRIMARY KEY AUTO_INCREMENT,
     semesterID INT(11),
     coursePrefix VARCHAR(11) NOT NULL,
-    courseNum VARCHAR(20) NOT NULL,
+    courseNum VARCHAR(25) NOT NULL,
     courseUnits INT(1) NOT NULL
 );
 
 INSERT INTO Course (coursePrefix, courseNum, courseUnits)
-	VALUES ('CSCI', '103', 2),
+	VALUES ('CSCI', '103', 4),
 		   ('CSCI', '101', 3),
 		   ('CSCI', '104', 4),
-		   ('CSCI', '109', 4),
+		   ('CSCI', '109', 2),
            ('CSCI', '201L', 4),
            ('CSCI', '270', 4),
            ('CSCI', '356', 4),
@@ -172,8 +172,6 @@ INSERT into Course (coursePrefix, courseNum, courseUnits)
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('ASTE', '480', 3);
     
-    
-    
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('CHE', '205', 3);
     
@@ -219,9 +217,6 @@ INSERT into Course (coursePrefix, courseNum, courseUnits)
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('CHE', '480', 3);
     
-
-
-
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('CE', '106L', 3);
     
@@ -385,6 +380,143 @@ VALUES('BUAD','497',4);
 
 INSERT INTO Course (coursePrefix, courseNum, courseUnits)
 	VALUES ('NA', 'Upper Division Elective', 4);
+
+INSERT INTO Course (coursePrefix, courseNum, courseUnits)
+	VALUES ('CSCI', '170', 4),
+		   ('CSCI', '350', 4),
+           ('ISE', '105', 2),
+           ('ISE', '315L', 3);
+
+CREATE TABLE Prereq (
+	courseID INT(11) not null,
+    prereqID INT(11) not null
+);
+
+-- CSCI -- 
+INSERT INTO Prereq (courseID, prereqID)
+	VALUES (3, 1),
+		   (155, 1),
+           (155, 4),
+           (5, 3),
+           (6, 3),
+           (6, 155),
+           (9, 5),
+           (7, 3),
+           (156, 5),
+           (156, 7),
+           (10, 155),
+           (10, 3),
+           (11, 6),
+           (11, 9);
+
+-- CSGM / ITP --
+INSERT INTO Prereq(courseID, prereqID)
+	VALUES (8, 5),
+		   (13, 122),
+           (13, 3),
+           (48, 47),
+           (47, 3),
+           (17, 47),
+           (51, 52),
+           (53, 52),
+           (15, 14),
+           (14, 48);
+           
+-- EE -- 
+INSERT INTO Prereq(courseID, prereqID)
+	VALUES (28, 21),
+		   (29, 28),
+           (26, 122),
+           (30, 29),
+           (31, 5);
+
+-- ISE -- 
+INSERT INTO Prereq(courseID, prereqID)
+	VALUES (32, 119),
+		   (33, 32),
+           (34, 32),
+           (36, 122),
+           (38, 33),
+           (38, 2),
+           (158, 33),
+           (158, 36),
+           (40, 33),
+           (40, 35),
+           (41, 40),
+           (37, 33);
+      
+-- ENE -- 
+INSERT INTO Prereq(courseID, prereqID)
+	VALUES (42, 141),
+		   (42, 125),
+           (42, 120),
+           (43, 42),
+           (44, 121),
+           (44, 141),
+           (44, 120);
+
+-- Declan -- 
+INSERT into Prereq (courseID, prereqID) 
+	VALUES (59, 118),
+	       (59, 124),
+           (60, 59),
+           (61, 59),
+           (62, 59),
+           (63, 120),
+           (64, 60),
+           (65, 119),
+           (65, 125),
+           (66, 121),
+           (67, 121),
+           (68, 65),
+           (69, 66),
+           (70, 68),
+           (71, 63),
+           (72, 66),
+           (73, 66),
+           (76, 63),
+           (79, 120),
+           (79, 125),
+           (80, 121),
+           (80, 126),
+           (81, 80),
+           (82, 79),
+           (82, 126),
+           (83, 82),
+           (84, 82),
+           (85, 82),
+           (86, 118),
+           (87, 118),
+           (88, 87),
+           (89, 88),
+           (90, 89),
+           (91, 89),
+           (92, 89),
+           (93, 89),
+           (94, 89),
+           (95, 93),
+           (96, 93),
+           (97, 93),
+           (98, 95),
+           (99, 93),
+           (100, 95),
+           (103, 124),
+           (104, 103),
+           (104, 122),
+           (105, 103),
+           (106, 103),
+           (107, 106),
+           (108, 106),
+           (108, 125),
+           (109, 106),
+           (110, 107),
+           (111, 106),
+           (112, 111),
+           (113, 106),
+           (114, 109),
+           (115, 109),
+           (116, 109),
+           (117, 112);
 
 CREATE TABLE Major (
 	majorID INT(11) PRIMARY KEY AUTO_INCREMENT,
