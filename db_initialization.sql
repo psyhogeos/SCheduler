@@ -90,7 +90,6 @@ INSERT INTO Course (coursePrefix, courseNum, courseUnits)
     
 CREATE TABLE Major (
 	majorID INT(11) PRIMARY KEY AUTO_INCREMENT,
-    studentID INT(11),
     majorPrefix VARCHAR(4) NOT NULL,
     majorTitle VARCHAR(30) NOT NULL
 );
