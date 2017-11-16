@@ -19,6 +19,8 @@
 			});
 		}
 	</script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
 	<title>Enter your information</title>
 </head>
 
@@ -29,7 +31,11 @@
 	<div id="section1" class="section">
 		<form method="POST" style="margin-top:125px;" onSubmit="return false;">
 			Enter your major: <br/>
-			<input type="text" name="major" style="margin-top:5px; height:25px;">
+			<select class="js-example-basic-single" name="major">
+				<option value ="CSCI">Computer Science</option>
+				<option value="CSBA">Computer Science Business Administration</option>
+				<option value="CECS">Computer Engineering and Computer Science</option>
+			</select>
 			<!-- <input type="button" onclick="scroll1()"> -->
 		</form>
 		<button id="button1" onclick="scroll1()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
