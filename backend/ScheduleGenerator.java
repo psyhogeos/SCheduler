@@ -15,8 +15,10 @@ public class ScheduleGenerator {
 			}
 			while(!noPrereqs.isEmpty()) {
 				curr = noPrereqs.poll();
-				for(Course c : curr.getDependencies()) {
-					c.getPrereqs().remove(curr);
+				for(Course c : toGraduate) {
+					if(c.getPrereqs().contains(curr)) {
+						c.getPrereqs().remove(curr);
+					}
 				}
 				toGraduateSorted.add(curr);
 				toGraduate.remove(curr);
@@ -36,17 +38,11 @@ public class ScheduleGenerator {
 		Course cs201 = new Course("cs201");
 		Course cs310 = new Course("cs310");
 		
-		cs103.getDependencies().add(cs104);
-		cs103.getDependencies().add(cs170);
-		cs109.getDependencies().add(cs170);
+
 		cs170.getPrereqs().add(cs103);
 		cs170.getPrereqs().add(cs109);
-		cs170.getDependencies().add(cs270);
 		cs104.getPrereqs().add(cs103);
-		cs104.getDependencies().add(cs201);
-		cs104.getDependencies().add(cs270);
 		cs201.getPrereqs().add(cs104);
-		cs201.getDependencies().add(cs310);
 		cs270.getPrereqs().add(cs170);
 		cs270.getPrereqs().add(cs104);
 		cs310.getPrereqs().add(cs201);
