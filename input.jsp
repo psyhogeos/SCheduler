@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="fuzzy-autocomplete.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" type="text/css" href="input.css">
 	<script>
@@ -19,8 +21,6 @@
 			});
 		}
 	</script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
 	<title>Enter your information</title>
 </head>
 
@@ -31,14 +31,20 @@
 	<div id="section1" class="section">
 		<form method="POST" style="margin-top:125px;" onSubmit="return false;">
 			Enter your major: <br/>
-			<select class="js-example-basic-single" name="major">
-				<option value ="CSCI">Computer Science</option>
-				<option value="CSBA">Computer Science Business Administration</option>
-				<option value="CECS">Computer Engineering and Computer Science</option>
-			</select>
+			<input type="text" name="major" id="major" style="margin-top:5px; height:25px;">
 			<!-- <input type="button" onclick="scroll1()"> -->
 		</form>
 		<button id="button1" onclick="scroll1()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
+		<script>
+			fuzzyAutocomplete($('#major'), [
+				"Computer Science", 
+				"Computer Science Business Administration", 
+				"Computer Engineering Computer Science",
+				"Chemical Engineering",
+				"Environmental Engineering",
+				"Electrical Engineering"
+			]);
+		</script>
 	</div>
 	<div id="section2" class="section">
 		<form method="POST" style="margin-left:41%;">
