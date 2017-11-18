@@ -45,17 +45,28 @@ public class CourseJDBC extends HttpServlet {
 			ArrayList<String> coursePrefix = new ArrayList<String>();
 			ArrayList<String> courseNum = new ArrayList<String>();
 			ArrayList<Integer> courseUnits = new ArrayList<Integer>();
+			ArrayList<String> prereq = new ArrayList<String>();
 
 			while (rs.next()) {
 				Integer courseID = rs.getInt("GetCourseID");
-				ResultSet rp = st.executeQuery("SELECT * from   Course  where courseID = " + courseID);
+				ResultSet rp = st.executeQuery("SELECT * from Course where courseID = " + courseID);
 				String courseprefix = rp.getString("coursePrefix");
 				String courseNumber = rp.getString("courseNum");
 				Integer units = rp.getInt("courseUnits");
 				coursePrefix.add(courseprefix);
 				courseNum.add(courseNumber);
 				courseUnits.add(units);
+				ResultSet rt = st.executeQuery("SELECT * from Prereq where courseID = " + courseID);
+				while ( rt.next())
+				{
+				Integer prereqID = rt.getInt("GetCourseID");
+				ResultSet rz = st.executeQuery("SELECT * from Course where courseID = " + prereqID);
+				
+				}
+				
 			}
+			ArrayList<Course> courses = new ArrayList<Course>();
+			
 			//CoursesToTake cou = new CoursesToTake(coursePrefix, courseNum , courseUnits);
 			// request.setAttribute("GetCources" , CoursesToTake);
 			
