@@ -1,0 +1,53 @@
+@charset "ISO-8859-1";
+body {
+  /* font-family: Arial; */
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  background-size: 110%;
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
+  color: white;
+  color: #89160C;
+}
+#container {
+	background-color: #FFFFFF;
+}
+#header {
+  position: fixed;
+  width: 100%;
+  height: 75px;
+  background-color: #3D3D3D;
+  background-color: #910B0B;
+  z-index: 2;
+}
+#title {
+	width: 100%;
+	height: 515px;
+	top: 150px;
+	position: relative;
+	height: 250px;
+	left: 300px;
+}
+
+#scheduleContainer {
+	position: relative;
+	left: 140px;
+}
+
+#scheduleObject {
+	width: 300px;
+}
+
+/* table, th, td {
+	border: 1px solid black;
+}
+
+tr {
+	height: 100px;
+}
+
+td {
+	width: 100px;
+	text-align: center;
+} */
