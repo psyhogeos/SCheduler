@@ -3,6 +3,19 @@ DROP DATABASE IF EXISTS FinalProject;
 CREATE DATABASE FinalProject;
 USE FinalProject;
 
+--  ADDED MASC 310 , AND MAYBE AN AME CLASS , 
+-- ADED CE 453, CE 456 -- 
+-- REMOVED CE 460 
+-- ADDED ISE 410 and csci 426 -- 
+
+-- CIVIL  , CHEM , electrical  , industrial is FINE -- 
+-- CS , CSBA and CS games are also fine -- 
+-- Aerospace is fine -- 
+-- Astronautical is fine -- 
+-- BME is fine -- 
+-- Mechanical is fine -- 
+
+
 CREATE TABLE Course (
 	courseID INT(11) PRIMARY KEY AUTO_INCREMENT,
     semesterID INT(11),
@@ -99,6 +112,12 @@ INSERT into Course (coursePrefix, courseNum, courseUnits)
     
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('AME', '231L', 3);
+    
+    INSERT into Course (coursePrefix, courseNum, courseUnits) 
+	values ('AME', '261', 4);
+    
+    INSERT into Course (coursePrefix, courseNum, courseUnits) 
+	values ('MASC', '310', 3);
 
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('AME', '301', 3);
@@ -135,9 +154,7 @@ INSERT into Course (coursePrefix, courseNum, courseUnits)
     
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('AME', '481', 4);
-    
-INSERT into Course (coursePrefix, courseNum, courseUnits) 
-	values ('AME', '105', 4);
+
     
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('AME', '101L', 3);
@@ -245,28 +262,27 @@ INSERT into Course (coursePrefix, courseNum, courseUnits)
 	values ('CE', '358', 3);
     
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
-	values ('CE', '451', 3);
-    
-INSERT into Course (coursePrefix, courseNum, courseUnits) 
-	values ('CE', '467L', 4);
-    
-INSERT into Course (coursePrefix, courseNum, courseUnits) 
-	values ('CE', '482', 3);
+	values ('CE', '402', 3);
     
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('CE', '408', 3);
     
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
-	values ('CE', '460', 3);
+	values ('CE', '451', 3),    
+				('CE', '453', 3), 
+				('CE', '456', 3);
+    
+INSERT into Course (coursePrefix, courseNum, courseUnits) 
+	values ('CE', '467L', 4);
     
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('CE', '471', 3);
-    
-INSERT into Course (coursePrefix, courseNum, courseUnits) 
-	values ('CE', '402', 3);
-    
+        
 INSERT into Course (coursePrefix, courseNum, courseUnits) 
 	values ('CE', '480', 3);
+    
+    INSERT into Course (coursePrefix, courseNum, courseUnits) 
+	values ('CE', '482', 3);
 
 INSERT INTO Course(coursePrefix , courseNum, courseUnits)
 VALUES('MATH','125',4);
@@ -385,7 +401,16 @@ INSERT INTO Course (coursePrefix, courseNum, courseUnits)
 	VALUES ('CSCI', '170', 4),
 		   ('CSCI', '350', 4),
            ('ISE', '105', 2),
-           ('ISE', '315L', 3);
+           ('ISE', '315L', 3),
+           ('CSCI', '426', 4),
+           ('ISE', '410', 3);
+
+CREATE TABLE User
+(
+	email VARCHAR (30)  NOT NULL,
+    passwords VARCHAR (30) NOT NULL
+
+);
 
 CREATE TABLE Prereq (
 	courseID INT(11) not null,
@@ -505,6 +530,7 @@ INSERT into Prereq (courseID, prereqID)
            (104, 122),
            (105, 103),
            (106, 103),
+           
            (107, 106),
            (108, 106),
            (108, 125),
@@ -519,41 +545,510 @@ INSERT into Prereq (courseID, prereqID)
            (117, 112);
 
 INSERT INTO Prereq(courseID, prereqID)
-VALUES(119,118),
-			(120,119),
-            (121,120),
-            (122,119),
-            (123,120),
-            (125,124),
-            (126,125),
-             (128,127),
-             (131,24),     -- BME302L--
-             (132, 121),
-             (133,146),  -- BME403--
-             (134,130), -- BME 405--
-             (134,24), -- BME 405 -- 
-           (136,125), -- BME 425--
-           (137, 125), -- BME 413--
-           (138, 146) , -- BME 402 --
-           (138, 130) , -- BME 402 --
-           (138, 121) , -- BME 402 --
-           (139,  142) , -- BME 410 --
-           (141 ,  140) , -- CHEM 105BL --
-           (142 , 141), -- CHEM 322AL-- 
-           (143, 142 ) , -- CHEM 322BL --
-           (144, 141) , -- CHEM 300L --
-			(145, 144) , -- CHEM 430 --
-            (145, 142) , -- CHEM 430 --
-            (145, 120) , -- CHEM 430 --
-             (145, 124) , -- CHEM 430 --
-             (147, 141) ; -- BISC 320 L --
+VALUES
+            (121,120),  -- MATHS 126 -- 
+            (122,121),  --  MATHS 226 -- 
+            (123,122),  --  MATHS 245 -- 
+            (124,121),   --  MATHS 225 -- 
+            (126,122),  -- MATHS 407 
+             (130,129),  -- WRIT 340 
+             (133,24),     -- BME302L--
+             (134, 123),   -- BME 423 -- 
+             (135,148),  -- BME403--
+             (136,132), -- BME 405--
+			
+           (136,24), -- BME 405--
+           (139, 127), -- BME 413--
+           (140, 148) , -- BME 402 --
+           (140, 132) , -- BME 402 --
+           (140, 123) , -- BME 402 --
+           (141,  144) , -- BME 410 --
+           (143 ,  142) , -- CHEM 105BL --
+           (144 , 143), -- CHEM 322AL-- 
+           (145, 144 ) , -- CHEM 322BL --
+           (146, 143) , -- CHEM 300L --
+			(147, 146) , -- CHEM 430 --
+            (147, 144) , -- CHEM 430 --
+            (147, 122) , -- CHEM 430 --
+             (147, 126) , -- CHEM 430 --
+             (149, 143) ; -- BISC 320 L --
              
 CREATE TABLE Major (
 	majorID INT(11) PRIMARY KEY AUTO_INCREMENT,
-    studentID INT(11),
     majorPrefix VARCHAR(4) NOT NULL,
     majorTitle VARCHAR(30) NOT NULL
 );
+
+CREATE TABLE  AerospaceEngineering
+(
+	AerospaceEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+	GetCourseID  INT(11) NOT NULL
+);
+INSERT INTO AerospaceEngineering(GetCourseID)
+-- NOT ADDED GE's and tech electives. 
+VALUES(58), 
+			(59),
+            (60),
+            (61),
+            (62),
+            (64),
+            (65),
+            (66),
+            (67),
+            (68),
+            (69),
+            (70),
+            (71),
+            (72),
+            (73),
+            (74),
+            (75),
+            (120),
+            (121),
+			(122),
+			(123),
+             (126),
+            (127),
+            (128),
+			(129),
+			(130),
+            (142),
+            (50),
+            (80),
+            (45);
+		
+           
+            
+CREATE TABLE  AstronauticalEngineering
+( AstronauticalEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+   GetCourseID  INT(11) NOT NULL
+); 
+INSERT INTO AstronauticalEngineering(GetCourseID) 
+VALUES
+-- NOT ADDED TECH ELECTIVES AND GE's 
+			(59),
+            (60),
+            (64),
+            (66),
+            (67),
+            (70),
+            (71),
+            (72),
+            (79),
+            (80),
+			(81),
+		    (82),
+			(83),
+			(84),
+			(85),
+			(86),
+            (50),
+            (45),
+            (120),
+			(121),
+		    (122),
+			(123),
+            (126),
+            (127),
+            (128),
+            (129),
+            (130),
+            (142);
+            
+CREATE TABLE  BiomedicalEngineering
+(
+	BiomedicalEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    GetCourseID   INT(11) NOT NULL
+    
+);
+INSERT INTO BiomedicalEngineering(GetCourseID)
+VALUES
+
+-- NO TECHNICAL ELECTIVES AND GE's ADDED
+  -- 131 to 141 cover BME courses
+  
+ 
+ (131),
+ (132),
+ (133),
+ (134),
+ (135),     -- BME ANCHOR COURSE 
+ (136),
+ (137),
+ (138),
+ (139),
+ (140),
+ (141),
+ (142),
+ (143),
+ (144),
+ (145),
+ (120),
+ (121),
+ (122),
+ (123),
+ (126),
+(127),
+(129),
+(130),
+(148),
+(149),
+(24),
+(50);
+
+
+
+
+
+CREATE TABLE CivilEngineering
+(
+	CivilEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    GetCourseID    INT(11) NOT NULL
+   
+);
+INSERT INTO CivilEngineering(GetCourseID)
+
+-- GEOLOGY NOT ADDED , GE NOT ADDED , DESIGN KERNEL AND CE NOT ADDED -- 
+VALUES
+(102),
+(103),
+(104),
+(105),
+(106),
+(107),
+(108),
+(109),
+(110),
+(111),
+(112),
+(113),
+(114),
+(115),
+(116),
+(117),
+(118),
+(119),
+(120),
+(121),
+(122),
+(123),
+(126),
+(127),
+(129),
+(130),
+(142),
+(35),
+(24),
+(50);
+
+
+
+
+CREATE TABLE ChemicalEngineering
+(
+	ChemicalEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    GetCourseID   INT(11) NOT NULL
+ 
+);
+
+INSERT INTO ChemicalEngineering( GetCourseID)
+--  NOT ADDED GE's , CHEMISTRY ELECTIVE , TECH ELECTIVES AND APPROVED ELECTIVES
+
+VALUES 
+(87),
+(88),
+(89),
+(90),
+(91),
+(92),
+(93),
+(94),
+(95),
+(96),
+(97),
+(98),
+(99),
+(100),
+(101),
+(50),
+(120),
+(121),
+(122),
+(123),
+(126),
+(127),
+(129),
+(130),
+(142),
+(143),
+(146),
+(144),
+(147);
+
+
+
+
+CREATE TABLE ElectricalEngineering
+(
+	ElectricalEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    GetCourseID   INT(11) NOT NULL
+    
+);
+
+INSERT INTO ElectricalEngineering(GetCourseID)
+-- NOT INCLUDED GE's , REquired Elective , capstone , ee elective. 
+VALUES
+(18),
+(19),
+(20),
+(21),
+(22),
+(23),
+(24),
+(25),
+(26),
+(27),
+(120),
+(121),
+(122),
+(123),
+(126),
+(127),
+(128),
+(129),
+(130),
+(142),
+(50);
+
+CREATE TABLE EnvironmentalEngineering
+(
+	EnvironmentalEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+   GetCourseID   INT(11) NOT NULL
+);
+INSERT INTO EnvironmentalEngineering(GetCourseID)
+VALUES
+ -- I AM NOT DOING ENVIRONMENTAL -- 
+(120),
+(121),
+(122),
+(123),
+(126),
+(127),
+
+(129),
+(130),
+(5);
+
+CREATE TABLE ComputerScience
+(
+	ComputerScienceID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    GetCourseID  INT(11) NOT NULL
+    
+);
+
+INSERT INTO ComputerScience(GetCourseID)
+VALUES  
+-- NOT ADDED GE's , Basic Science , tech electives , required electives. 
+(1),
+(4),
+(3),
+(155),
+(5),
+(6),
+(9),    
+(156),  -- 350 --
+(7),   --  356 -- 
+(10),  -- 360 -- 
+(11),     -- 401 -- 
+(120),
+(121),
+(122),
+(124),
+(125),
+(129),
+(130),
+(21),
+(50),
+
+	(12);   -- DELETE THIS
+
+
+CREATE TABLE ComputerScienceBusinessAdministration
+(
+	ComputerScienceBusinessAdministrationID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+     GetCourseID INT(11) NOT NULL
+);
+
+INSERT INTO ComputerScienceBusinessAdministration( GetCourseID)
+VALUES
+
+-- NOT ADDED GE's and CSCI/BUAD ELECTIVES --
+(1),
+(4),
+(3),
+(155),
+(5),
+(6),
+(9),
+(11), 
+(148),   
+(149),
+(150),
+(151),
+(152),
+(153),
+(57), 
+(55),
+(56),
+(129),
+(130),
+(126),
+(50),
+(120),
+(121),
+(124),
+(125);
+
+
+CREATE TABLE ComputerScienceGames
+(
+	ComputerScienceGamesID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    GetCourseID INT(11)  NOT NULL
+);
+
+INSERT INTO ComputerScienceGames(GetCourseID)
+VALUES 
+--  NOT ADDED GE's 
+(1),
+(4),
+(3),
+(155),
+(5),
+(6),
+(9),    
+(156),  -- 350 --
+(8), -- 353 --
+(7),   --  356 -- 
+(10),  -- 360 -- 
+(13),   -- 420 --
+(14),  -- 491 --
+(15), -- 491 --
+(16),
+(17),
+(161), -- CSCI 426 -- 
+(47),
+(48),
+(51),
+(52),
+(53),
+(54),
+(50),
+(129),
+(130),
+(126),
+(120),
+(121),
+(124);
+
+
+
+CREATE TABLE IndustrialEngineering
+(
+	IndustrialEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+		GetCourseID INT(11)  NOT NULL
+);
+INSERT INTO IndustrialEngineering(GetCourseID)
+-- NOT ADDED GE's , DSO 435 and Other Courses 
+VALUES
+(159), -- 105 --
+(160), -- 315--
+(32),
+(33),
+(34),
+(35),
+(36),
+(37),
+(38),
+(39),
+(40),
+(41),
+(162) ,  -- ISE 410 --
+(120),
+(121),
+(122),
+(124),
+(126),
+(127),
+(142),
+(129),
+(130),
+(2),
+(50),
+(49);
+
+
+
+
+
+CREATE TABLE MechanicalEngineering
+(
+	MechanicalEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    GetCourseID INT(11) NOT NULL  
+);
+
+INSERT INTO MechanicalEngineering ( GetCourseID)
+VALUES
+			(76),		--   -- AME 101 --
+			(59),     -- AME 201 -- 
+            (60),		-- AME 204 -- 
+            (64),     -- AME 301 -- 
+            (68),		-- AME 302 -- 
+            (65),    -- AME 308 -- 
+            (66),    -- AME 309 -- 
+            (69),    -- AME 310 -- 
+            (77),     -- AME 331 -- 
+            (67),   -- AME 341al -- 
+            (70),	 -- AME 341bl --
+            (70),	 -- AME  441  --
+            (120),    -- MATH 226 --
+            (121),     -- MATH 245 --
+             (122),    -- MATH 226 --
+            (123),     -- MATH 245 --
+            (126),    -- PHYS 151 -- 
+            (127),    -- PHYS 152 -- 
+            (128),    -- PHYS 153 -- 
+            ( 129),
+            (130),
+             (50),  -- ENGR 102 -- 
+             (45),  -- ITP 168 --
+             (142),
+             (63); 
+             -- I HAVE NOT ADDED  , GE's AME CORE , AME DESIGN ELECTIVE AND CAPSTONE ELECTIVE
+           
+            
+            
+            
+
+
+
+
+
+CREATE TABLE ComputerEngineeringandComputerScience
+(
+	ComputerEngineeringandComputerScienceID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    GetCourseID   INT(11)   NOT NULL
+
+);
+INSERT INTO ComputerEngineeringandComputerScience(GetCourseID)
+VALUES 
+
+(11);  -- DELETE THIS -- 
+
+
+
+
+
+
 
 CREATE TABLE Student (
 	studentID INT(11) PRIMARY KEY AUTO_INCREMENT,
@@ -574,7 +1069,9 @@ CREATE TABLE Semester (
 
 CREATE TABLE CoursePlan (
 	planID INT(11) PRIMARY KEY AUTO_INCREMENT,
-    studentID INT(11) NOT NULL
+    studentID INT(11) NOT NULL,
+     GetCourseID  INT(11) NOT NULL
+    
 	-- FOREIGN KEY fk2(studentID) REFERENCES Student(studentID)
 );
 
@@ -596,10 +1093,42 @@ ADD FOREIGN KEY (semesterID) REFERENCES Semester(semesterID);
 ALTER TABLE Student
 ADD FOREIGN KEY (majorID) REFERENCES Major(majorID);
 
+INSERT INTO Course (coursePrefix, courseNum, courseUnits)
+	VALUES ('AME', 'TECH ELECTIVE', 3),
+		   ('ASTE', 'TECH ELECTIVE', 3),
+           ('BME', 'TECH ELECTIVE', 3),
+           ('CHE', 'TECH ELECTIVE', 3),
+           ('CE', 'TECH ELECTIVE', 3),
+           ('ENE', 'TECH ELECTIVE', 3),
+           ('CSCI', 'TECH ELECTIVE I', 3),
+		   ('CSCI', 'TECH ELECTIVE II', 3),
+           ('CSCI', 'TECH ELECTIVE III', 4),
+           ('CSCI', 'TECH ELECTIVE IV', 4),
+           ('EE', 'TECH ELECTIVE', 4),
+           ('ISE', 'TECH ELECTIVE', 4);
+           
+INSERT INTO Prereq(courseID, prereqID)
+	VALUES (163, 68),
+		   (164, 83),
+           (165, 134),
+           (166, 90),
+           (167, 108),
+           (168, 200),
+           (169, 9),
+           (170, 169),
+           (171, 170),
+           (172, 171),
+           (173, 22),
+           (174, 34);
+           
+INSERT INTO Course (coursePrefix, courseNum, courseUnits)
+	VALUES ('GE', 'A', 4),
+			('GE', 'B', 4),
+            ('GE', 'C', 4),
+            ('GE', 'D', 4),
+            ('GE', 'E', 4);
+
 ALTER TABLE takenCourses
-ADD FOREIGN KEY (studentID) REFERENCES Student(studentID),
+ADD FOREIGN KEY (studentID) REFERENCES Student(studecoursecoursentID),
 ADD FOREIGN KEY (courseID) REFERENCES Course(courseID);
 
-
-
-	
