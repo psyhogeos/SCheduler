@@ -40,7 +40,9 @@ public class ScheduleGenerator {
 	public void printSchedule(ArrayList<ArrayList<Course>> schedule) {
 		for(int i=0; i<schedule.size(); ++i) {
 			for(int j=0; j<schedule.get(i).size(); ++j) {
-				System.out.println("Semester " + i + " Course: " + schedule.get(i).get(j).getName());
+				int semNum = i + 1;
+				System.out.println("Semester " + semNum + " Course: " + schedule.get(i).get(j).getPrefix() + " "
+						+ schedule.get(i).get(j).getNum());
 			}
 		}
 	}
@@ -87,7 +89,7 @@ public class ScheduleGenerator {
 			ArrayList<Course> currSemester = schedule.get(i);
 			for(int j=0; j<currSemester.size(); ++j) {
 				Course currCourse = currSemester.get(j);
-				if(currCourse.getName().contains("ge")) {
+				if(currCourse.getPrefix().contains("GE")) {
 					if(!geCheck) {
 						geCheck = true;
 					}
@@ -112,26 +114,26 @@ public class ScheduleGenerator {
 	
 	public static void main(String [] args) {
 		ScheduleGenerator sg = new ScheduleGenerator();
-		Course cs103 = new Course("cs103", 4);
-		Course cs109 = new Course("cs109", 2);
-		Course cs170 = new Course("cs170", 4);
-		Course cs104 = new Course("cs104", 4);
-		Course cs270 = new Course("cs270", 4);
-		Course cs201 = new Course("cs201", 4);
-		Course cs310 = new Course("cs310", 4);
-		Course cs360 = new Course("cs360", 4);
-		Course cs356 = new Course("cs356", 4);
-		Course math125 = new Course("math125", 4);
-		Course math126 = new Course("math126", 4);
-		Course math225 = new Course("math225", 4);
-		Course ee109 = new Course("ee109", 4);
-		Course geA = new Course("geA", 4);
-		Course geB = new Course("geB", 4);
-		Course geC = new Course("geC", 4);
-		Course geD = new Course("geD", 4);
-		Course geE = new Course("geE", 4);
-		Course geF = new Course("geF", 4);
-		Course cs401 = new Course("cs401", 4);
+		Course cs103 = new Course("CSCI", "103", 4);
+		Course cs109 = new Course("CSCI", "109", 2);
+		Course cs170 = new Course("CSCI", "170", 4);
+		Course cs104 = new Course("CSCI", "104", 4);
+		Course cs270 = new Course("CSCI", "270", 4);
+		Course cs201 = new Course("CSCI", "201", 4);
+		Course cs310 = new Course("CSCI", "310", 4);
+		Course cs360 = new Course("CSCI", "360", 4);
+		Course cs356 = new Course("CSCI", "356", 4);
+		Course math125 = new Course("MATH", "125", 4);
+		Course math126 = new Course("MATH", "126", 4);
+		Course math225 = new Course("MATH", "225", 4);
+		Course ee109 = new Course("EE", "109", 4);
+		Course geA = new Course("GE", "A", 4);
+		Course geB = new Course("GE", "B", 4);
+		Course geC = new Course("GE", "C", 4);
+		Course geD = new Course("GE", "D", 4);
+		Course geE = new Course("GE", "E", 4);
+		Course geF = new Course("GE", "F", 4);
+		Course cs401 = new Course("CSCI", "401", 4);
 
 		cs170.getPrereqs().add(cs103);
 		cs170.getPrereqs().add(cs109);
