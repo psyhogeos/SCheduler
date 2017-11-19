@@ -26,12 +26,6 @@ public class ScheduleGenerator {
 		return toGraduateSorted;
 	}
 	
-	public CoursePlan generateCoursePlan(ArrayList<Course> toGraduate) {
-		CoursePlan generatedCoursePlan = new CoursePlan();
-		Semester currentSemester = new Semester();
-		
-	}
-	
 	public static void main(String [] args) {
 		ScheduleGenerator sg = new ScheduleGenerator();
 		Course cs103 = new Course("cs103");
