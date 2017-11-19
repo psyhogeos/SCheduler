@@ -1,10 +1,10 @@
-import java.util.ArrayList;
+import java.util.Vector;
 import java.util.LinkedList;
 
 public class ScheduleGenerator {
 	
-	public ArrayList<Course> topSort(ArrayList<Course> toGraduate) {
-		ArrayList<Course> toGraduateSorted = new ArrayList<Course>();
+	public Vector<Course> topSort(Vector<Course> toGraduate) {
+		Vector<Course> toGraduateSorted = new Vector<Course>();
 		LinkedList<Course> noPrereqs = new LinkedList<Course>();
 		Course curr = null;
 		while(!toGraduate.isEmpty()) {
@@ -24,6 +24,12 @@ public class ScheduleGenerator {
 			}
 		}
 		return toGraduateSorted;
+	}
+	
+	public CoursePlan generateCoursePlan(Vector<Course> toGraduate) {
+		CoursePlan generatedCoursePlan = new CoursePlan();
+		Semester currentSemester = new Semester();
+		
 	}
 	
 	public static void main(String [] args) {
@@ -51,7 +57,7 @@ public class ScheduleGenerator {
 		cs270.getPrereqs().add(cs104);
 		cs310.getPrereqs().add(cs201);
 		
-		ArrayList<Course> toGraduate = new ArrayList<Course>();
+		Vector<Course> toGraduate = new Vector<Course>();
 		toGraduate.add(cs310);
 		toGraduate.add(cs104);
 		toGraduate.add(cs103);
@@ -59,7 +65,7 @@ public class ScheduleGenerator {
 		toGraduate.add(cs109);
 		toGraduate.add(cs270);
 		toGraduate.add(cs170);
-		ArrayList<Course> toGraduateSorted = sg.topSort(toGraduate);
+		Vector<Course> toGraduateSorted = sg.topSort(toGraduate);
 		for(Course c : toGraduateSorted) {
 			System.out.println(c.getName());
 		}
