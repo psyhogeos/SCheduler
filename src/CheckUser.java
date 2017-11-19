@@ -34,6 +34,7 @@ public class QueryStudent extends HttpServlet {
 	        		if (passwordMatch.equals(pw)) {
 	        			//Succesful match
 	        			request.setAttribute("userEmail", email);
+	        			HttpServletResponse.sendRedirect("input.jsp");
 	        		}
 	        		else{
 	        	
