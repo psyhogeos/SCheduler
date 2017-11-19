@@ -67,7 +67,7 @@ public class CourseJDBC extends HttpServlet {
 			}
 			ArrayList<Course> courses = new ArrayList<Course>();
 			request.setAttribute("courses", courses);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/input.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/checkbox.jsp");
 			dispatcher.forward(request, response);
 			//CoursesToTake cou = new CoursesToTake(coursePrefix, courseNum , courseUnits);
 			// request.setAttribute("GetCources" , CoursesToTake);
