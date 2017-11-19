@@ -43,6 +43,8 @@ public class AddStudent extends HttpServlet {
 		    	   preparedStmt.setString(1, email);
 		    	   preparedStmt.setString(2, password);
 		    	   preparedStmt.execute();
+		    	   request.setAttribute("userEmail", email);
+	        	   HttpServletResponse.sendRedirect("input.jsp");
 		    	   conn.close();
 		    	   
 		    }catch (SQLException sqle) {
