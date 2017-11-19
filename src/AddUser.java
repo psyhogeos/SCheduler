@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.mysql.jdbc.PreparedStatement;
 
 
-@WebServlet("/AddStudent")
-public class AddStudent extends HttpServlet {
+@WebServlet("/AddUser")
+public class AddUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
