@@ -135,6 +135,7 @@ public class ScheduleGenerator {
 		Course geF = new Course("GE", "F", 4);
 		Course cs401 = new Course("CSCI", "401", 4);
 
+
 		cs170.getPrereqs().add(cs103);
 		cs170.getPrereqs().add(cs109);
 		cs104.getPrereqs().add(cs103);

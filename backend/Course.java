@@ -6,6 +6,7 @@ public class Course {
 	private String num;
 	private int units;
 	private int courseCount = 0;
+  
 	public Course(String prefix, String num, int units) {
 		this.prefix = prefix;
 		this.num = num;
@@ -40,5 +41,11 @@ public class Course {
 	}
 	public void setNum(String num) {
 		this.num = num;
+	}
+	public int getUnits() {
+		return units;
+	}
+	public void setUnits(int units) {
+		this.units = units;
 	}
 }
