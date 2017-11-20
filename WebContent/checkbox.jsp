@@ -15,11 +15,10 @@
 		Enter Your Courses
 	</div>
 	<%
-		ArrayList<Course> courses = (ArrayList<Course>)request.getAttribute("GetCourses");
+		// ArrayList<Course> courses = (ArrayList<Course>)request.getAttribute("GetCourses");
 		// ArrayList<Course> courses = new ArrayList<Course>(40);
 		// int size = courses.size();
 		ArrayList<String> indices = new ArrayList<String>();
-		ArrayList<Course> coursesTaken = new ArrayList<Course>();
 	%>
 	<div id="check-container">
 		<form>
@@ -30,15 +29,14 @@
 					
 	<%
 						for (int j = 0; j < 10; j++) {
-							if ((i+1)*(j+1) >= courses.size()) {
+							if ((i+1)*(j+1) >= 40) {
 								
 							}
 							else {
-								String pre = courses.get((i+1)*(j+1)-1).getPrefix();
-								String num = courses.get((i+1)*(j+1)-1).getNum();
+								// String pre = courses.get((i+1)*(j+1)-1).getPrefix();
+								// String num = courses.get((i+1)*(j+1)-1).getNum();
 		%>
-								// Course <%=(i+1)*(j+1)%> <input type="checkbox" name="checkbox" value="<%=Integer.toString((i+1)*(j+1))%>" style="margin-bottom:10px;"/><br />
-								<%=pre%> <%=num%> <input type="checkbox" name="checkbox" value="<%=Integer.toString((i+1)*(j+1))%>" style="margin-bottom:10px;"/><br />
+								Course <%=(i+1)*(j+1)%> <input type="checkbox" name="checkbox" value="<%=Integer.toString((i+1)*(j+1))%>" style="margin-bottom:10px;"/><br />
 								
 	<%						
 							}
@@ -48,20 +46,21 @@
 	<%
 			}
 	%>
-		<input type="submit" value="Save Courses">
+		<input class="button" type="submit" value="Save Courses" style="margin-top:-100px; margin-left:47%;">
 	</form>
 	</div>
 	<%
 		String c[] = request.getParameterValues("checkbox");
 		if (c != null) {
 			for (int i = 0; i < c.length; i++) {
-				coursesTaken.add(courses.get(i));
+				indices.add(c[i]);
+				%> <%=c[i]%> <%
 			}
 		}
-		session.setAttribute("coursesTaken", coursesTaken);
+		session.setAttribute("indices", indices);
 	%>
 	<a href="output.jsp">
-	<button id="generate">
+	<button class="button" id="generate">
 		Generate Course Plans
 	</button>
 	</a>
