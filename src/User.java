@@ -40,7 +40,7 @@ public class User {
 
 			for (int j = 0; j < coursesLeft.size(); j++) {
 				if (currCourse.getPrefix().equals(coursesLeft.get(j).getPrefix()) &&
-						currCourse.getCourseNumber().equals(coursesLeft.get(j).getCourseNumber())) {
+						currCourse.getNum().equals(coursesLeft.get(j).getNum())) {
 					coursesLeft.remove(j);
 				}
 			}
