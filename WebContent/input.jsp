@@ -12,30 +12,17 @@
     		"top": 515
 			});
 		}
-		function scroll2() {
-			window.scrollTo({
-    		"behavior": "smooth",
-    		"top": 1030
-			});
-		}
 	</script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
 	<title>Enter your information</title>
 </head>
 
 <body>
-	<div id="container">
-	<div id="header">	
-	</div>
+
+	<div id="header"></div>
 	<div id="section1" class="section">
 		<form method="POST" style="margin-top:125px;" onSubmit="return false;">
 			Enter your major: <br/>
-			<select class="js-example-basic-single" name="major">
-				<option value ="CSCI">Computer Science</option>
-				<option value="CSBA">Computer Science Business Administration</option>
-				<option value="CECS">Computer Engineering and Computer Science</option>
-			</select>
+			<input type="text" name="major" style="margin-top:5px; height:25px;">
 			<!-- <input type="button" onclick="scroll1()"> -->
 		</form>
 		<button id="button1" onclick="scroll1()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
@@ -54,13 +41,19 @@
 			</select>
 			<!-- <input type="button" onclick="scroll2()" value="submit"> -->
 		</form>
-		<button id="button2" onclick="scroll2()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
+		<a href="checkbox.jsp"> <button id="button2" onclick="scroll2()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button></a>
 	</div>
-	<div id="section3" class="section">
+	<!-- <div id="section3" class="section">
 		<form method="POST">
 			<input type="button" value="submit">
 		</form>
-	</div>
-	</div>
+	</div> -->
+	
+	<!-- <a href="checkbox.jsp">
+		<button id="generate" onclick="checkbox.jsp">
+			Enter Courses 
+		</button>
+	</a> -->
+	
 </body>
 </html>
