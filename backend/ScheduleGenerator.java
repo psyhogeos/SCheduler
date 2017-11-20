@@ -8,11 +8,17 @@ import java.util.Set;
 
 public class ScheduleGenerator {
 	private ArrayList<ArrayList<ArrayList<Course>>> schedules = new ArrayList<ArrayList<ArrayList<Course>>>();
-	private int semesters = 8;
+	private ArrayList<Course> toGraduate;
+	private int semesters;
 	private int counter = 1;
 	private Boolean stop = false;
-
-	public ArrayList<Course> topSort(ArrayList<Course> toGraduate) {
+	
+	public ScheduleGenerator(ArrayList<Course> toGraduateUnsorted, int semesters) {
+		this.semesters = semesters;
+		this.toGraduate = toGraduateUnsorted;
+	}
+	
+	public void topSort() {
 		ArrayList<Course> toGraduateSorted = new ArrayList<Course>();
 		LinkedList<Course> noPrereqs = new LinkedList<Course>();
 		Course curr = null;
@@ -34,7 +40,7 @@ public class ScheduleGenerator {
 				noPrereqs.remove(curr);
 			}
 		}
-		return toGraduateSorted;
+		this.toGraduate = toGraduateSorted;
 	}
 	
 	public void printSchedule(ArrayList<ArrayList<Course>> schedule) {
@@ -47,7 +53,7 @@ public class ScheduleGenerator {
 		}
 	}
 	
-	public void generateAll(ArrayList<Course> toGraduateSorted, ArrayList<ArrayList<Course>> schedule, Set<Course> completed) {
+	public void generateAll(ArrayList<Course> toGraduateSorted, ArrayList<ArrayList<Course>> schedule) {
 		// if we've already generated enough schedules, stop all instances
 		if(stop) return;
 		else if(toGraduateSorted.isEmpty()) {
@@ -55,17 +61,15 @@ public class ScheduleGenerator {
 			printSchedule(schedule);
 			schedules.add(schedule);
 			counter++;
-			if(counter == 51) stop = true;
+			if(counter == 101) stop = true;
 			return;
 		}
 		for(int i=0; i<semesters; ++i) {
 			Course currCourse = toGraduateSorted.get(0);
 			schedule.get(i).add(currCourse);
-			if(validSchedule(schedule, completed)) {
+			if(validSchedule(schedule)) {
 				toGraduateSorted.remove(0);
-				completed.add(currCourse);
-				generateAll(toGraduateSorted, schedule, completed);
-				completed.remove(currCourse);
+				generateAll(toGraduateSorted, schedule);
 				toGraduateSorted.add(0, currCourse);
 			}
 			schedule.get(i).remove(currCourse);
@@ -82,7 +86,7 @@ public class ScheduleGenerator {
 		}
 		return false;
 	}
-	public Boolean validSchedule(ArrayList<ArrayList<Course>> schedule, Set<Course> completed) {
+	public Boolean validSchedule(ArrayList<ArrayList<Course>> schedule) {
 		for(int i=0; i<schedule.size(); ++i) {
 			int unitTotal = 0;
 			Boolean geCheck = false;
@@ -113,7 +117,6 @@ public class ScheduleGenerator {
 	}
 	
 	public static void main(String [] args) {
-		ScheduleGenerator sg = new ScheduleGenerator();
 		Course cs103 = new Course("CSCI", "103", 4);
 		Course cs109 = new Course("CSCI", "109", 2);
 		Course cs170 = new Course("CSCI", "170", 4);
@@ -134,7 +137,6 @@ public class ScheduleGenerator {
 		Course geE = new Course("GE", "E", 4);
 		Course geF = new Course("GE", "F", 4);
 		Course cs401 = new Course("CSCI", "401", 4);
-
 
 		cs170.getPrereqs().add(cs103);
 		cs170.getPrereqs().add(cs109);
@@ -172,17 +174,24 @@ public class ScheduleGenerator {
 		toGraduate.add(geF);
 		toGraduate.add(cs401);
 		
+		ScheduleGenerator sg = new ScheduleGenerator(toGraduate, 8);
+		
+		// assigns initial value of number of prereqs, which is used in 
+		// top sort without actually removing courses from the prereq arraylist
 		for(int i=0; i<toGraduate.size(); ++i) {
 			toGraduate.get(i).setCourseCount(toGraduate.get(i).getPrereqs().size());
 		}
-		ArrayList<Course> toGraduateSorted = sg.topSort(toGraduate);
+		sg.topSort();
 
 		ArrayList<ArrayList<Course>> schedule = new ArrayList<ArrayList<Course>>();
-		for(int i=0; i<8; ++i) {
+		for(int i=0; i<sg.getSemesters(); ++i) {
 			ArrayList<Course> temp = new ArrayList<Course>();
 			schedule.add(temp);
 		}
-		sg.generateAll(toGraduateSorted, schedule, new HashSet<Course>());
+		ArrayList<Course> toGraduateSorted = sg.getToGraduate();
+		
+		// results are stored in schedules data member
+		sg.generateAll(toGraduateSorted, schedule);
 	}
 
 	public ArrayList<ArrayList<ArrayList<Course>>> getSchedules() {
@@ -191,5 +200,37 @@ public class ScheduleGenerator {
 
 	public void setSchedules(ArrayList<ArrayList<ArrayList<Course>>> schedules) {
 		this.schedules = schedules;
+	}
+
+	public ArrayList<Course> getToGraduate() {
+		return toGraduate;
+	}
+
+	public void setToGraduate(ArrayList<Course> toGraduate) {
+		this.toGraduate = toGraduate;
+	}
+
+	public int getSemesters() {
+		return semesters;
+	}
+
+	public void setSemesters(int semesters) {
+		this.semesters = semesters;
+	}
+
+	public int getCounter() {
+		return counter;
+	}
+
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
+
+	public Boolean getStop() {
+		return stop;
+	}
+
+	public void setStop(Boolean stop) {
+		this.stop = stop;
 	}
 }
