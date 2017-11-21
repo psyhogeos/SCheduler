@@ -6,6 +6,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="fuzzy-autocomplete.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<!--Import Google Icon Font-->
+	<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+	<!--Import materialize.css-->
+	<!-- <link rel="stylesheet" type="text/css" href="materialize.min.css"/> -->
 	<link rel="stylesheet" type="text/css" href="input.css">
 	<script>
 		function scroll1() {
@@ -14,17 +18,24 @@
     		"top": 515
 			});
 		}
+		function scroll2() {
+			window.scrollTo({
+    		"behavior": "smooth",
+    		"top": 1030
+			});
+		}
 	</script>
 	<title>Enter your information</title>
 </head>
 
 <body>
-
-	<div id="header"></div>
+	<div id="container">
+	<div id="header">	
+	</div>
 	<div id="section1" class="section">
 		<form method="POST" style="margin-top:125px;" onSubmit="return false;">
 			Enter your major: <br/>
-			<input type="text" name="major" style="margin-top:5px; height:25px;">
+			<input type="text" name="major" id="major" style="margin-top:5px; height:25px;">
 			<!-- <input type="button" onclick="scroll1()"> -->
 		</form>
 		<button id="button1" onclick="scroll1()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
@@ -53,19 +64,13 @@
 			</select>
 			<!-- <input type="button" onclick="scroll2()" value="submit"> -->
 		</form>
-		<a href="checkbox.jsp"> <button id="button2" onclick="scroll2()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button></a>
+		<button id="button2" onclick="scroll2()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
 	</div>
-	<!-- <div id="section3" class="section">
+	<div id="section3" class="section">
 		<form method="POST">
-			<input type="button" value="submit">
+			<input type="button" value="Submit">
 		</form>
-	</div> -->
-	
-	<!-- <a href="checkbox.jsp">
-		<button id="generate" onclick="checkbox.jsp">
-			Enter Courses 
-		</button>
-	</a> -->
-	
+	</div>
+	</div>
 </body>
 </html>
