@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="fuzzy-autocomplete.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" type="text/css" href="input.css">
 	<script>
@@ -26,6 +28,16 @@
 			<!-- <input type="button" onclick="scroll1()"> -->
 		</form>
 		<button id="button1" onclick="scroll1()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
+		<script>
+			fuzzyAutocomplete($('#major'), [
+				"Computer Science", 
+				"Computer Science Business Administration", 
+				"Computer Engineering Computer Science",
+				"Chemical Engineering",
+				"Environmental Engineering",
+				"Electrical Engineering"
+			]);
+		</script>
 	</div>
 	<div id="section2" class="section">
 		<form method="POST" style="margin-left:41%;">

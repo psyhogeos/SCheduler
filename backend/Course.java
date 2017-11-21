@@ -5,6 +5,7 @@ public class Course {
 	private String prefix;
 	private String num;
 	private int units;
+	private int courseCount = 0;
 	public Course(String prefix, String num, int units) {
 		this.prefix = prefix;
 		this.num = num;
@@ -13,8 +14,20 @@ public class Course {
 	public ArrayList<Course> getPrereqs() {
 		return prereqs;
 	}
-	public void setPreqs(ArrayList<Course> prereqs) {
+	public void setPrereqs(ArrayList<Course> prereqs) {
 		this.prereqs = prereqs;
+	}
+	public int getCourseCount() {
+		return courseCount;
+	}
+	public void setCourseCount(int courseCount) {
+		this.courseCount = courseCount;
+	}
+	public int getUnits() {
+		return units;
+	}
+	public void setUnits(int units) {
+		this.units = units;
 	}
 	public String getPrefix() {
 		return prefix;
@@ -27,14 +40,5 @@ public class Course {
 	}
 	public void setNum(String num) {
 		this.num = num;
-	}
-	public void setPrereqs(ArrayList<Course> prereqs) {
-		this.prereqs = prereqs;
-	}
-	public int getUnits() {
-		return units;
-	}
-	public void setUnits(int units) {
-		this.units = units;
 	}
 }
