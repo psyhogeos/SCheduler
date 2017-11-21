@@ -59,7 +59,7 @@
 		}
 		session.setAttribute("indices", indices);
 	%>
-	<a href="output.jsp">
+	<a href="displayschedules.jsp">
 	<button class="button" id="generate">
 		Generate Course Plans
 	</button>
