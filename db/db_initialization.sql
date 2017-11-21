@@ -1126,7 +1126,6 @@ VALUES
 
 CREATE TABLE Student (
 	studentID INT(11) PRIMARY KEY AUTO_INCREMENT,
-    majorID INT(11) NOT NULL,
     email VARCHAR(30) NOT NULL,
     password VARCHAR(30) NOT NULL
     -- FOREIGN KEY fk1(majorID) REFERENCES Major(majorID),
@@ -1161,9 +1160,6 @@ ADD FOREIGN KEY (planID) REFERENCES CoursePlan(planID);
 
 ALTER TABLE Course
 ADD FOREIGN KEY (semesterID) REFERENCES Semester(semesterID);
-
-ALTER TABLE Student
-ADD FOREIGN KEY (majorID) REFERENCES Major(majorID);
 
 ALTER TABLE takenCourses
 ADD FOREIGN KEY (studentID) REFERENCES Student(studentID),
