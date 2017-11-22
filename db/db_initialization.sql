@@ -14,13 +14,6 @@ USE FinalProject;
 -- Astronautical is fine -- 
 -- BME is fine -- 
 -- Mechanical is fine -- 
-<<<<<<< HEAD
-=======
--- Astronautical is fine --
--- Chemical is fine --
--- Civil is fine --
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
-
 
 CREATE TABLE Course (
 	courseID INT(11) PRIMARY KEY AUTO_INCREMENT,
@@ -409,12 +402,8 @@ INSERT INTO Course (coursePrefix, courseNum, courseUnits)
            ('ISE', '105', 2),
            ('ISE', '315L', 3),
            ('CSCI', '426', 4),
-<<<<<<< HEAD
-           ('ISE', '410', 3);
-=======
            ('ISE', '410', 3),
 		   ('CE', '473', 3);
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
 
 CREATE TABLE Prereq (
 	courseID INT(11) not null,
@@ -480,15 +469,10 @@ INSERT INTO Prereq(courseID, prereqID)
 		   (42, 127),
            (42, 122),
            (43, 42),
-<<<<<<< HEAD
            (44, 123),
            (44, 143),
            (44, 122);
-=======
-           (44, 121),
-           (44, 141),
-           (44, 120);
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
+
 
 -- Aerospace / Mechanical Engineering (AME) --
 INSERT INTO Prereq (courseID, prereqID)
@@ -563,74 +547,6 @@ INSERT INTO Prereq (courseID, prereqID)
            (118, 116), -- CE 480 --
            (118, 163), -- CE 480 --
            (118, 119); -- CE 480 --
-<<<<<<< HEAD
-=======
-
--- Declan -- 
-/*
-INSERT into Prereq (courseID, prereqID) 
-	VALUES -- (59, 120),
-	       -- (59, 126),
-           -- (60, 59),
-           -- (61, 59), --
-           -- (62, 59),
-           -- (63, 120),
-           -- (64, 60),
-           -- (65, 119),
-           -- (65, 125),
-           -- (66, 121),
-           -- (67, 121),
-           -- (68, 65),
-           -- (69, 66),
-           -- (70, 68),
-           -- (71, 63),
-           -- (72, 66),
-           -- (73, 66),
-           -- (76, 63),
-           (79, 120),
-           (79, 125),
-           (80, 121),
-           (80, 126),
-           (81, 80),
-           (82, 79),
-           (82, 126),
-           (83, 82),
-           (84, 82),
-           (85, 82),
-           (86, 118),
-           (87, 118),
-           (88, 87),
-           (89, 88),
-           (90, 89),
-           (91, 89),
-           (92, 89),
-           (93, 89),
-           (94, 89),
-           (95, 93),
-           (96, 93),
-           (97, 93),
-           (98, 95),
-           (99, 93),
-           (100, 95),
-           (103, 124),
-           (104, 103),
-           (104, 122),
-           (105, 103),
-           (106, 103),
-           (107, 106),
-           (108, 106),
-           (108, 125),
-           (109, 106),
-           (110, 107),
-           (111, 106),
-           (112, 111),
-           (113, 106),
-           (114, 109),
-           (115, 109),
-           (116, 109),
-           (117, 112);
-*/
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
 
 INSERT INTO Prereq(courseID, prereqID)
 VALUES
@@ -644,7 +560,6 @@ VALUES
              (134, 123),   -- BME 423 -- 
              (135,148),  -- BME403--
              (136,132), -- BME 405--
-			
            (136,24), -- BME 405--
            (139, 127), -- BME 413--
            (140, 148) , -- BME 402 --
@@ -762,10 +677,6 @@ VALUES
  (134),
  (135),     -- BME ANCHOR COURSE 
  (136),
-<<<<<<< HEAD
-=======
- (136),
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
  (137),
  (138),
  (139),
@@ -926,7 +837,6 @@ VALUES
 (123),
 (126),
 (127),
-
 (129),
 (130),
 (5);
