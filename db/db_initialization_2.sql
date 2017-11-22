@@ -14,12 +14,9 @@ USE FinalProject;
 -- Astronautical is fine -- 
 -- BME is fine -- 
 -- Mechanical is fine -- 
-<<<<<<< HEAD
-=======
 -- Astronautical is fine --
 -- Chemical is fine --
 -- Civil is fine --
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
 
 
 CREATE TABLE Course (
@@ -409,12 +406,8 @@ INSERT INTO Course (coursePrefix, courseNum, courseUnits)
            ('ISE', '105', 2),
            ('ISE', '315L', 3),
            ('CSCI', '426', 4),
-<<<<<<< HEAD
-           ('ISE', '410', 3);
-=======
            ('ISE', '410', 3),
 		   ('CE', '473', 3);
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
 
 CREATE TABLE Prereq (
 	courseID INT(11) not null,
@@ -423,17 +416,17 @@ CREATE TABLE Prereq (
 
 -- CSCI -- 
 INSERT INTO Prereq (courseID, prereqID)
-	VALUES (3, 1), -- CSCI 103 --
-		   (157, 1), -- CSCI 170 -- 
-           (157, 4), -- CSCI 170 --
+	VALUES (3, 1),
+		   (155, 1),
+           (155, 4),
            (5, 3),
            (6, 3),
-           (6, 157),
+           (6, 155),
            (9, 5),
            (7, 3),
-           (158, 5),
-           (158, 7),
-           (10, 157),
+           (156, 5),
+           (156, 7),
+           (10, 155),
            (10, 3),
            (11, 6),
            (11, 9);
@@ -464,11 +457,11 @@ INSERT INTO Prereq(courseID, prereqID)
 	VALUES (32, 119),
 		   (33, 32),
            (34, 32),
-           (36, 124),
+           (36, 122),
            (38, 33),
            (38, 2),
-           (160, 33),
-           (160, 36),
+           (158, 33),
+           (158, 36),
            (40, 33),
            (40, 35),
            (41, 40),
@@ -476,19 +469,13 @@ INSERT INTO Prereq(courseID, prereqID)
       
 -- ENE -- 
 INSERT INTO Prereq(courseID, prereqID)
-	VALUES (42, 143),
-		   (42, 127),
-           (42, 122),
+	VALUES (42, 141),
+		   (42, 125),
+           (42, 120),
            (43, 42),
-<<<<<<< HEAD
-           (44, 123),
-           (44, 143),
-           (44, 122);
-=======
            (44, 121),
            (44, 141),
            (44, 120);
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
 
 -- Aerospace / Mechanical Engineering (AME) --
 INSERT INTO Prereq (courseID, prereqID)
@@ -563,8 +550,6 @@ INSERT INTO Prereq (courseID, prereqID)
            (118, 116), -- CE 480 --
            (118, 163), -- CE 480 --
            (118, 119); -- CE 480 --
-<<<<<<< HEAD
-=======
 
 -- Declan -- 
 /*
@@ -630,36 +615,36 @@ INSERT into Prereq (courseID, prereqID)
            (116, 109),
            (117, 112);
 */
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
 
 INSERT INTO Prereq(courseID, prereqID)
-VALUES
-            (121,120),  -- MATHS 126 -- 
-            (122,121),  --  MATHS 226 -- 
-            (123,122),  --  MATHS 245 -- 
-            (124,121),   --  MATHS 225 -- 
-            (126,122),  -- MATHS 407 
-             (130,129),  -- WRIT 340 
-             (133,24),     -- BME302L--
-             (134, 123),   -- BME 423 -- 
-             (135,148),  -- BME403--
-             (136,132), -- BME 405--
-			
-           (136,24), -- BME 405--
-           (139, 127), -- BME 413--
-           (140, 148) , -- BME 402 --
-           (140, 132) , -- BME 402 --
-           (140, 123) , -- BME 402 --
-           (141,  144) , -- BME 410 --
-           (143 ,  142) , -- CHEM 105BL --
-           (144 , 143), -- CHEM 322AL-- 
-           (145, 144 ) , -- CHEM 322BL --
-           (146, 143) , -- CHEM 300L --
-			(147, 146) , -- CHEM 430 --
-            (147, 144) , -- CHEM 430 --
-            (147, 122) , -- CHEM 430 --
-             (147, 126) , -- CHEM 430 --
-             (149, 143) ; -- BISC 320 L --
+VALUES(119,118),
+			(120,119),
+            (121,120),
+            (122,119),
+            (123,120),
+            (125,124),
+            (126,125),
+             (128,127),
+             (131,24),     -- BME302L--
+             (132, 121),
+             (133,146),  -- BME403--
+             (134,130), -- BME 405--
+             (134,24), -- BME 405 -- 
+           (136,125), -- BME 425--
+           (137, 125), -- BME 413--
+           (138, 146) , -- BME 402 --
+           (138, 130) , -- BME 402 --
+           (138, 121) , -- BME 402 --
+           (139,  142) , -- BME 410 --
+           (141 ,  140) , -- CHEM 105BL --
+           (142 , 141), -- CHEM 322AL-- 
+           (143, 142 ) , -- CHEM 322BL --
+           (144, 141) , -- CHEM 300L --
+			(145, 144) , -- CHEM 430 --
+            (145, 142) , -- CHEM 430 --
+            (145, 120) , -- CHEM 430 --
+             (145, 124) , -- CHEM 430 --
+             (147, 141) ; -- BISC 320 L --
              
 CREATE TABLE Major (
 	majorID INT(11) PRIMARY KEY AUTO_INCREMENT,
@@ -708,7 +693,7 @@ VALUES(58),
            
             
 CREATE TABLE  AstronauticalEngineering
-( AstronauticalEngineeringID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+( AstronauticalEngineeriastronauticalengineeringngID INT(11)  PRIMARY KEY AUTO_INCREMENT,
    AstronauticalEngineeringCourseID  INT(11) NOT NULL
 ); 
 INSERT INTO AstronauticalEngineering(AstronauticalEngineeringCourseID) 
@@ -762,10 +747,7 @@ VALUES
  (134),
  (135),     -- BME ANCHOR COURSE 
  (136),
-<<<<<<< HEAD
-=======
  (136),
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
  (137),
  (138),
  (139),
@@ -1144,6 +1126,7 @@ VALUES
 
 CREATE TABLE Student (
 	studentID INT(11) PRIMARY KEY AUTO_INCREMENT,
+    majorID INT(11) NOT NULL,
     email VARCHAR(30) NOT NULL,
     password VARCHAR(30) NOT NULL
     -- FOREIGN KEY fk1(majorID) REFERENCES Major(majorID),
@@ -1179,11 +1162,11 @@ ADD FOREIGN KEY (planID) REFERENCES CoursePlan(planID);
 ALTER TABLE Course
 ADD FOREIGN KEY (semesterID) REFERENCES Semester(semesterID);
 
+ALTER TABLE Student
+ADD FOREIGN KEY (majorID) REFERENCES Major(majorID);
+
 ALTER TABLE takenCourses
 ADD FOREIGN KEY (studentID) REFERENCES Student(studentID),
-<<<<<<< HEAD
-ADD FOREIGN KEY (courseID) REFERENCES Course(courseID);
-=======
 ADD FOREIGN KEY (courseID) REFERENCES Course(courseID);
 
 INSERT INTO Course (coursePrefix, courseNum, courseUnits)
@@ -1199,39 +1182,3 @@ INSERT INTO Course (coursePrefix, courseNum, courseUnits)
            ('CSCI', 'TECH ELECTIVE IV', 4),
            ('EE', 'TECH ELECTIVE', 4),
            ('ISE', 'TECH ELECTIVE', 4);
-           
-INSERT INTO Course (coursePrefix, courseNum, courseUnits)
-	VALUES ('AME', 'TECH ELECTIVE', 3),
-		   ('ASTE', 'TECH ELECTIVE', 3),
-           ('BME', 'TECH ELECTIVE', 3),
-           ('CHE', 'TECH ELECTIVE', 3),
-           ('CE', 'TECH ELECTIVE', 3),
-           ('ENE', 'TECH ELECTIVE', 3),
-           ('CSCI', 'TECH ELECTIVE I', 3),
-		   ('CSCI', 'TECH ELECTIVE II', 3),
-           ('CSCI', 'TECH ELECTIVE III', 4),
-           ('CSCI', 'TECH ELECTIVE IV', 4),
-           ('EE', 'TECH ELECTIVE', 4),
-           ('ISE', 'TECH ELECTIVE', 4);
-           
-INSERT INTO Prereq(courseID, prereqID)
-	VALUES (163, 68),
-		   (164, 83),
-           (165, 134),
-           (166, 90),
-           (167, 108),
-           (168, 200),
-           (169, 9),
-           (170, 169),
-           (171, 170),
-           (172, 171),
-           (173, 22),
-           (174, 34);
-           
-INSERT INTO Course (coursePrefix, courseNum, courseUnits)
-	VALUES ('GE', 'A', 4),
-			('GE', 'B', 4),
-            ('GE', 'C', 4),
-            ('GE', 'D', 4),
-            ('GE', 'E', 4);
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
