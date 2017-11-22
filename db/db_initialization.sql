@@ -1181,9 +1181,7 @@ ADD FOREIGN KEY (semesterID) REFERENCES Semester(semesterID);
 
 ALTER TABLE takenCourses
 ADD FOREIGN KEY (studentID) REFERENCES Student(studentID),
-<<<<<<< HEAD
-ADD FOREIGN KEY (courseID) REFERENCES Course(courseID);
-=======
+ADD FOREIGN KEY (courseID) REFERENCES Course(courseID),
 ADD FOREIGN KEY (courseID) REFERENCES Course(courseID);
 
 INSERT INTO Course (coursePrefix, courseNum, courseUnits)
@@ -1200,19 +1198,6 @@ INSERT INTO Course (coursePrefix, courseNum, courseUnits)
            ('EE', 'TECH ELECTIVE', 4),
            ('ISE', 'TECH ELECTIVE', 4);
            
-INSERT INTO Course (coursePrefix, courseNum, courseUnits)
-	VALUES ('AME', 'TECH ELECTIVE', 3),
-		   ('ASTE', 'TECH ELECTIVE', 3),
-           ('BME', 'TECH ELECTIVE', 3),
-           ('CHE', 'TECH ELECTIVE', 3),
-           ('CE', 'TECH ELECTIVE', 3),
-           ('ENE', 'TECH ELECTIVE', 3),
-           ('CSCI', 'TECH ELECTIVE I', 3),
-		   ('CSCI', 'TECH ELECTIVE II', 3),
-           ('CSCI', 'TECH ELECTIVE III', 4),
-           ('CSCI', 'TECH ELECTIVE IV', 4),
-           ('EE', 'TECH ELECTIVE', 4),
-           ('ISE', 'TECH ELECTIVE', 4);
            
 INSERT INTO Prereq(courseID, prereqID)
 	VALUES (163, 68),
@@ -1234,4 +1219,3 @@ INSERT INTO Course (coursePrefix, courseNum, courseUnits)
             ('GE', 'C', 4),
             ('GE', 'D', 4),
             ('GE', 'E', 4);
->>>>>>> fe0b981dcc4c7f7de8c9001f4d9e648f7ba97e2d
