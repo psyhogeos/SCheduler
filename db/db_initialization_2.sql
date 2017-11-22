@@ -1107,13 +1107,13 @@ VALUES
 
 
 
-CREATE TABLE ComputerEngineeringandComputerScience
+CREATE TABLE ComputerEngineeringComputerScience
 (
-	ComputerEngineeringandComputerScienceID INT(11)  PRIMARY KEY AUTO_INCREMENT,
-    CEandCSCourseID   INT(11)   NOT NULL
+	ComputerEngineeringComputerScienceID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    CECSCourseID   INT(11)   NOT NULL
 
 );
-INSERT INTO ComputerEngineeringandComputerScience(CEandCSCourseID)
+INSERT INTO ComputerEngineeringComputerScience(CECSCourseID)
 VALUES 
 
 (11);  -- DELETE THIS -- 

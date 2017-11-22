@@ -1,3 +1,4 @@
+package backend;
 import java.util.ArrayList;
 
 public class Course {
@@ -6,10 +7,17 @@ public class Course {
 	private String num;
 	private int units;
 	private int courseCount = 0;
+	private int courseID;
 	public Course(String prefix, String num, int units) {
 		this.prefix = prefix;
 		this.num = num;
 		this.units = units;
+	}
+	public Course(String prefix, String num, int units, int courseID) {
+		this.prefix = prefix;
+		this.num = num;
+		this.units = units;
+		this.courseID = courseID;
 	}
 	public ArrayList<Course> getPrereqs() {
 		return prereqs;
@@ -40,5 +48,11 @@ public class Course {
 	}
 	public void setNum(String num) {
 		this.num = num;
+	}
+	public int getCourseID() {
+		return courseID;
+	}
+	public void setCourseID(int courseID) {
+		this.courseID = courseID;
 	}
 }

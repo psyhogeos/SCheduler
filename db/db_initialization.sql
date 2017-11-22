@@ -1179,20 +1179,6 @@ INSERT INTO Course (coursePrefix, courseNum, courseUnits)
            ('EE', 'TECH ELECTIVE', 4),
            ('ISE', 'TECH ELECTIVE', 4);
            
-INSERT INTO Course (coursePrefix, courseNum, courseUnits)
-	VALUES ('AME', 'TECH ELECTIVE', 3),
-		   ('ASTE', 'TECH ELECTIVE', 3),
-           ('BME', 'TECH ELECTIVE', 3),
-           ('CHE', 'TECH ELECTIVE', 3),
-           ('CE', 'TECH ELECTIVE', 3),
-           ('ENE', 'TECH ELECTIVE', 3),
-           ('CSCI', 'TECH ELECTIVE I', 3),
-		   ('CSCI', 'TECH ELECTIVE II', 3),
-           ('CSCI', 'TECH ELECTIVE III', 4),
-           ('CSCI', 'TECH ELECTIVE IV', 4),
-           ('EE', 'TECH ELECTIVE', 4),
-           ('ISE', 'TECH ELECTIVE', 4);
-           
 INSERT INTO Prereq(courseID, prereqID)
 	VALUES (163, 68),
 		   (164, 83),

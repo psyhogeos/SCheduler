@@ -7,9 +7,9 @@
 	<script src="fuzzy-autocomplete.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<!--Import Google Icon Font-->
-	<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
-	<!-- <link rel="stylesheet" type="text/css" href="materialize.min.css"/> -->
+	<link rel="stylesheet" type="text/css" href="materialize.min.css"/>
 	<link rel="stylesheet" type="text/css" href="input.css">
 	<script>
 		function scroll1() {
@@ -24,6 +24,12 @@
     		"top": 1030
 			});
 		}
+	</script>
+	<script>
+		$(document).ready(
+			function() {
+				$('select').material_select();
+		});
 	</script>
 	<title>Enter your information</title>
 </head>
@@ -41,19 +47,19 @@
 		<button id="button1" onclick="scroll1()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
 		<script>
 			fuzzyAutocomplete($('#major'), [
+				"Chemical Engineering",
+				"Computer Engineering Computer Science",
 				"Computer Science", 
 				"Computer Science Business Administration", 
-				"Computer Engineering Computer Science",
-				"Chemical Engineering",
-				"Environmental Engineering",
-				"Electrical Engineering"
+				"Electrical Engineering",
+				"Environmental Engineering"
 			]);
 		</script>
 	</div>
 	<div id="section2" class="section">
 		<form method="POST" style="margin-left:41%;">
 			Select your graduation date: <br/>
-			<select name="grad-date" style="margin-top:5px; height:31px;">
+			<select id="gradDropdown" name="grad-date" class="input-field" style="margin-top:5px; height:31px;">
   				<option value="20181">Spring 2018</option>
   				<option value="20183">Fall 2018</option>
   				<option value="20191">Spring 2019</option>
@@ -67,7 +73,7 @@
 		<button id="button2" onclick="scroll2()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
 	</div>
 	<div id="section3" class="section">
-		<form method="POST">
+		<form method="POST" action="CourseJDBC">
 			<input type="button" value="Submit">
 		</form>
 	</div>
