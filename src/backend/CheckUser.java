@@ -6,9 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,40 +29,30 @@ public class CheckUser extends HttpServlet {
 	    	Class.forName("com.mysql.jdbc.Driver");
 	        conn = DriverManager.getConnection("jdbc:mysql://localhost/FinalProject?user=root&password=root&useSSL=false");
 	        st = conn.createStatement();
-	        if (email.length() > 0 && pw.length() > 0) {
 	        	rs = st.executeQuery("SELECT * from Student where email='" + email + "'");
-	        	if (rs != null) {
+	        	if (rs.next()) {
 	        		String passwordMatch = null;
-	        		while(rs.next()) {
-	        			passwordMatch = rs.getString("password");
-	        			System.out.println(passwordMatch);
-	        		}
-	        		if (passwordMatch.equals(pw)) {
-	        			//Successful match
-	        			request.setAttribute("userEmail", email);
-	        			//response.sendRedirect("input.jsp");
-	        			response.sendRedirect("displayStudent.jsp");
-	        		}
-	        		else{
-	        	
-	        		//wrong password
+	        		passwordMatch = rs.getString("password");
+	        		System.out.println(passwordMatch);
+	        		if(passwordMatch != null) {
+	        			if (passwordMatch.equals(pw)) {
+		        			//Successful match
+		        			request.setAttribute("userEmail", email);
+		        			//response.sendRedirect("input.jsp");
+		        			response.sendRedirect("displayStudent.jsp");
+		        		}
+		        		else {
+		        			request.setAttribute("errorMessage", "<font color=\"white\">Invalid password or username</font><br />");
+			        		getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+		        		//wrong password
+		        		}
 	        		}
 	        	}
 	        	else {
 	        		//No email in database
-
+	        		request.setAttribute("errorMessage", "<font color=\"white\">Invalid password or username</font><br />");
+	        		getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 	        	}
-
-	        }
-
-
-
-
-
-
-
-	        
-	        
 	    } catch (SQLException sqle) {
 	    	System.out.println (sqle.getMessage());
 	    } catch (ClassNotFoundException cnfe) {
@@ -85,7 +73,6 @@ public class CheckUser extends HttpServlet {
 	    	}
 	    }  
 
-	    System.out.println("Failed");
 	    //String nextJSP = "/displayStudent.jsp";
 		//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 		//dispatcher.forward(request,response);
