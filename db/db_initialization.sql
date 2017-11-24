@@ -848,7 +848,7 @@ CREATE TABLE ComputerScience
     
 );
 
-INSERT INTO ComputerScience( ComputerScienceCourseID)
+INSERT INTO ComputerScience(ComputerScienceCourseID)
 VALUES  
 -- NOT ADDED GE's , Basic Science , tech electives , required electives. 
 (1),
@@ -881,7 +881,7 @@ CREATE TABLE ComputerScienceBusinessAdministration
      ComputerScienceBusinessAdministrationCourseID INT(11) NOT NULL
 );
 
-INSERT INTO ComputerScienceBusinessAdministration( ComputerScienceBusinessAdministrationCourseID)
+INSERT INTO ComputerScienceBusinessAdministration(ComputerScienceBusinessAdministrationCourseID)
 VALUES
 
 -- NOT ADDED GE's and CSCI/BUAD ELECTIVES --
@@ -998,7 +998,7 @@ CREATE TABLE MechanicalEngineering
     MechanicalEngineeringCourseID INT(11) NOT NULL  
 );
 
-INSERT INTO MechanicalEngineering ( MechanicalEngineeringCourseID)
+INSERT INTO MechanicalEngineering (MechanicalEngineeringCourseID)
 VALUES
 			(76),		--   -- AME 101 --
 			(59),     -- AME 201 -- 
@@ -1035,13 +1035,13 @@ VALUES
 
 
 
-CREATE TABLE ComputerEngineeringandComputerScience
+CREATE TABLE ComputerEngineeringComputerScience
 (
-	ComputerEngineeringandComputerScienceID INT(11)  PRIMARY KEY AUTO_INCREMENT,
-    CEandCSCourseID   INT(11)   NOT NULL
+	ComputerEngineeringComputerScienceID INT(11)  PRIMARY KEY AUTO_INCREMENT,
+    ComputerEngineeringComputerScienceCourseID   INT(11)   NOT NULL
 
 );
-INSERT INTO ComputerEngineeringandComputerScience(CEandCSCourseID)
+INSERT INTO ComputerEngineeringandComputerScience(ComputerEngineeringComputerScienceCourseID)
 VALUES 
 
 (11);  -- DELETE THIS -- 

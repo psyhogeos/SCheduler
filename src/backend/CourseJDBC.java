@@ -1,3 +1,4 @@
+package backend;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,48 +32,57 @@ public class CourseJDBC extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Connection conn = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		Statement st = null;
+		// Gets name of the major from input page
 		String majorname = request.getParameter("major");
+		// Removes spaces from the major name
+		majorname = majorname.replaceAll("\\s", "");
+		Connection conn = null;
+		Statement st = null;
+//		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+			// Get connection
 			conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/StudentGrades?user=root&password=root&useSSL=false");
+					.getConnection("jdbc:mysql://localhost/FinalProject?user=root&password=j00nhakim&useSSL=false");
+			// Creates the statement
 			st = conn.createStatement();
+			// Initializes result set 
+			System.out.println("#0:" + majorname);
 			rs = st.executeQuery("SELECT * from " + majorname);
-			ArrayList<String> coursePrefix = new ArrayList<String>();
-			ArrayList<String> courseNum = new ArrayList<String>();
-			ArrayList<Integer> courseUnits = new ArrayList<Integer>();
-			ArrayList<String> prereq = new ArrayList<String>();
-
-			while (rs.next()) {
-				Integer courseID = rs.getInt("GetCourseID");
-				ResultSet rp = st.executeQuery("SELECT * from Course where courseID = " + courseID);
-				String courseprefix = rp.getString("coursePrefix");
-				String courseNumber = rp.getString("courseNum");
-				Integer units = rp.getInt("courseUnits");
-				coursePrefix.add(courseprefix);
-				courseNum.add(courseNumber);
-				courseUnits.add(units);
-				ResultSet rt = st.executeQuery("SELECT * from Prereq where courseID = " + courseID);
-				while ( rt.next())
-				{
-				Integer prereqID = rt.getInt("GetCourseID");
-				ResultSet rz = st.executeQuery("SELECT * from Course where courseID = " + prereqID);
-				
-				}
-				
-			}
 			ArrayList<Course> courses = new ArrayList<Course>();
+			while (rs.next()) {
+				Integer courseID = rs.getInt(majorname + "CourseID");
+				System.out.println("#1:" + courseID);
+				ResultSet rp = st.executeQuery("SELECT * from Course where courseID = " + courseID);
+				System.out.println("#2:" + courseID);
+				while (rp.next()) {
+					String coursePrefix = rp.getString("coursePrefix");
+					String courseNumber = rp.getString("courseNum");
+					Integer units = rp.getInt("courseUnits");
+					System.out.println("#3:" + coursePrefix + " " + courseNumber + " " + units);
+					Course c = new Course(coursePrefix, courseNumber, units, courseID);
+					courses.add(c);
+				}
+			}
+			System.out.println("#3: HIIII");
+			for (Course c : courses) {
+				ResultSet rp = st.executeQuery("SELECT * from Prereq where courseID = " + c.getCourseID());
+				while (rp.next()) {
+					int prereqID = rp.getInt("prereqID");
+					for(Course c2 : courses) {
+						if(c2.getCourseID() == prereqID) {
+							ArrayList<Course> cBuffer = c.getPrereqs();
+							cBuffer.add(c2);
+							c.setPrereqs(cBuffer);
+						}
+					}
+				}
+			}
 			request.setAttribute("courses", courses);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/checkbox.jsp");
 			dispatcher.forward(request, response);
-			//CoursesToTake cou = new CoursesToTake(coursePrefix, courseNum , courseUnits);
-			// request.setAttribute("GetCources" , CoursesToTake);
-			
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,27 +91,21 @@ public class CourseJDBC extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally
-		{
-			try
-			{
-				if(rs != null)
-				{
-					rs.close();
-				}
-				if(st!=null)
-				{
-					st.close();
-				}
-				if(conn!=null)
-				{
-					conn.close();
-				}
-			}
-			catch(SQLException sqle)
-			{
-				System.out.println(sqle.getMessage());
-			}
+		finally {
+//			try {
+//				if(rs != null) {
+//					rs.close();
+//				}
+//				if(st!=null) {
+//					st.close();
+//				}
+//				if(conn!=null) {
+//					conn.close();
+//				}
+//			}
+//			catch(SQLException sqle) {
+//				System.out.println(sqle.getMessage());
+//			}
 			String nextJSP = " ";
 			RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/checkbox.jsp");
 			dispatch.forward(request,response);
