@@ -1041,7 +1041,7 @@ CREATE TABLE ComputerEngineeringComputerScience
     ComputerEngineeringComputerScienceCourseID   INT(11)   NOT NULL
 
 );
-INSERT INTO ComputerEngineeringandComputerScience(ComputerEngineeringComputerScienceCourseID)
+INSERT INTO ComputerEngineeringComputerScience(ComputerEngineeringComputerScienceCourseID)
 VALUES 
 
 (11);  -- DELETE THIS -- 
