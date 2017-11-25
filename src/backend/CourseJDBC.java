@@ -2,7 +2,7 @@ package backend;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+//import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,41 +36,51 @@ public class CourseJDBC extends HttpServlet {
 		String majorname = request.getParameter("major");
 		// Removes spaces from the major name
 		majorname = majorname.replaceAll("\\s", "");
-		Connection conn = null;
-		Statement st = null;
+		Connection connectionOne = null;
+		Connection connectionTwo = null;
+		Connection connectionThree = null;
+		Statement stOne = null;
+		Statement stTwo = null;
 //		PreparedStatement ps = null;
-		ResultSet rs = null;
+//		ResultSet rs = null;
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			// Get connection
-			conn = DriverManager
+			connectionOne = DriverManager
+					.getConnection("jdbc:mysql://localhost/FinalProject?user=root&password=j00nhakim&useSSL=false");
+			connectionTwo = DriverManager
+					.getConnection("jdbc:mysql://localhost/FinalProject?user=root&password=j00nhakim&useSSL=false");
+			connectionThree = DriverManager
 					.getConnection("jdbc:mysql://localhost/FinalProject?user=root&password=j00nhakim&useSSL=false");
 			// Creates the statement
-			st = conn.createStatement();
+			stOne = connectionOne.createStatement();
 			// Initializes result set 
 			System.out.println("#0:" + majorname);
-			rs = st.executeQuery("SELECT * from " + majorname);
+			// rsOne is entire "major" table
+			ResultSet rsOne = stOne.executeQuery("SELECT * from " + majorname);
 			ArrayList<Course> courses = new ArrayList<Course>();
-			while (rs.next()) {
-				Integer courseID = rs.getInt(majorname + "CourseID");
+			while (rsOne.next()) {
+				Integer courseID = rsOne.getInt(majorname + "CourseID");
 				System.out.println("#1:" + courseID);
-				ResultSet rp = st.executeQuery("SELECT * from Course where courseID = " + courseID);
+				stTwo = connectionTwo.createStatement();
+				ResultSet rsTwo = stTwo.executeQuery("SELECT * from Course where courseID = " + courseID);
 				System.out.println("#2:" + courseID);
-				while (rp.next()) {
-					String coursePrefix = rp.getString("coursePrefix");
-					String courseNumber = rp.getString("courseNum");
-					Integer units = rp.getInt("courseUnits");
+				while (rsTwo.next()) {
+					String coursePrefix = rsTwo.getString("coursePrefix");
+					String courseNumber = rsTwo.getString("courseNum");
+					Integer units = rsTwo.getInt("courseUnits");
 					System.out.println("#3:" + coursePrefix + " " + courseNumber + " " + units);
 					Course c = new Course(coursePrefix, courseNumber, units, courseID);
 					courses.add(c);
 				}
 			}
+			Statement stThree = connectionThree.createStatement();
 			System.out.println("#3: HIIII");
 			for (Course c : courses) {
-				ResultSet rp = st.executeQuery("SELECT * from Prereq where courseID = " + c.getCourseID());
-				while (rp.next()) {
-					int prereqID = rp.getInt("prereqID");
+				ResultSet rsThree = stThree.executeQuery("SELECT * from Prereq where courseID = " + c.getCourseID());
+				while (rsThree.next()) {
+					int prereqID = rsThree.getInt("prereqID");
 					for(Course c2 : courses) {
 						if(c2.getCourseID() == prereqID) {
 							ArrayList<Course> cBuffer = c.getPrereqs();
@@ -81,8 +91,9 @@ public class CourseJDBC extends HttpServlet {
 				}
 			}
 			request.setAttribute("courses", courses);
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/checkbox.jsp");
-			dispatcher.forward(request, response);
+//			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/checkbox.jsp");
+//			dispatcher.forward(request, response);
+//			return;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -99,8 +110,8 @@ public class CourseJDBC extends HttpServlet {
 //				if(st!=null) {
 //					st.close();
 //				}
-//				if(conn!=null) {
-//					conn.close();
+//				if(connectionOne!=null) {
+//					connectionOne.close();
 //				}
 //			}
 //			catch(SQLException sqle) {
