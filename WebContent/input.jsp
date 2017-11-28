@@ -3,10 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="fuzzy-autocomplete.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="materialize.css">
 	<link rel="stylesheet" type="text/css" href="input.css">
+	<!-- <link rel="stylesheet" type="text/css" href="materialize.min.css"> -->
 	<script>
 		function scroll1() {
 			window.scrollTo({
@@ -14,35 +17,49 @@
     		"top": 515
 			});
 		}
+		function scroll2() {
+			window.scrollTo({
+    		"behavior": "smooth",
+    		"top": 1030
+			});
+		}
+		function sendData() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("GET", "inputvalidate.jsp?major=" + document.input.major.value +
+						"&semesters=" + document.input.semesters.value, false);
+				xhttp.send();
+				if(xhttp.responseText.trim().length > 0) {
+					document.getElementById("formerror").innerHTML = xhttp.responseText;
+					return false;
+				}
+				return true;
+		}
 	</script>
 	<title>Enter your information</title>
 </head>
 
 <body>
-
-	<div id="header"></div>
-	<div id="section1" class="section">
-		<form method="POST" style="margin-top:125px;" onSubmit="return false;">
-			Enter your major: <br/>
-			<input type="text" name="major" style="margin-top:5px; height:25px;">
-			<!-- <input type="button" onclick="scroll1()"> -->
-		</form>
-		<button id="button1" onclick="scroll1()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button>
-		<script>
-			fuzzyAutocomplete($('#major'), [
-				"Computer Science", 
-				"Computer Science Business Administration", 
-				"Computer Engineering Computer Science",
-				"Chemical Engineering",
-				"Environmental Engineering",
-				"Electrical Engineering"
-			]);
-		</script>
+	<div id="formerror"></div>
+	<div id="container">
+	<div id="header">	
 	</div>
-	<div id="section2" class="section">
-		<form method="POST" style="margin-left:41%;">
+	
+	<div id="blurb">
+		<h1>Welcome!</h1>
+		<h3>We'd like to learn a little more about you. Enter your major and expected graduation date below.</h3>
+	</div> 
+	
+	<form method="POST" name="input" style="margin-top:125px;" action="CourseJDBC" onSubmit="return sendData();">
+		<div id="section1" class="section">
+			Enter your major: <br/>
+			<input type="text" name="major" id="major" style="margin-top:5px; height:25px;">
+			<!-- <input type="button" onclick="scroll1()"> -->
+			<!-- <button id="button1"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button> -->
+		</div>
+		<div id="section2" class="section">
 			Select your graduation date: <br/>
-			<select name="grad-date" style="margin-top:5px; height:31px;">
+			<div class="browser-default">
+			<select name="grad-date" style="margin-top:5px; height:38px;">
   				<option value="20181">Spring 2018</option>
   				<option value="20183">Fall 2018</option>
   				<option value="20191">Spring 2019</option>
@@ -51,21 +68,31 @@
   				<option value="20203">Fall 2020</option>
   				<option value="20211">Spring 2021</option>
 			</select>
+			</div>
 			<!-- <input type="button" onclick="scroll2()" value="submit"> -->
-		</form>
-		<a href="checkbox.jsp"> <button id="button2" onclick="scroll2()"><img src="https://image.flaticon.com/icons/png/512/16/16049.png"/></button></a>
+			<!-- <button id="button2"> Enter Courses  </button>-->
+			<button class="btn waves-effect.waves-light red darken-3" type="submit" name="action">Enter Your Courses</button>
+		</div> 
+		<!-- <div id="section3" class="section">
+			<input type="submit" value="submit">
+		</div> -->
+	</form>
 	</div>
-	<!-- <div id="section3" class="section">
-		<form method="POST">
-			<input type="button" value="submit">
-		</form>
-	</div> -->
-	
-	<!-- <a href="checkbox.jsp">
-		<button id="generate" onclick="checkbox.jsp">
-			Enter Courses 
-		</button>
-	</a> -->
-	
+	<script>
+		fuzzyAutocomplete($('#major'), [
+			"Aerospace Engineering",
+			"Astronautical Engineering",
+			"Biomedical Engineering",
+			"Chemical Engineering",
+			"Civil Engineering",
+			"Computer Engineering Computer Science",
+			"Computer Science", 
+			"Computer Science Business Administration",
+			"Computer Science Games",
+			"Electrical Engineering",
+			"Environmental Engineering",
+			"Mechanical Engineering"
+		]);
+	</script>
 </body>
 </html>
