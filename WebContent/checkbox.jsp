@@ -22,7 +22,7 @@
 		ArrayList<String> indices = new ArrayList<String>();
 	%>
 	<div id="check-container">
-		<form>
+		<form method="POST" name="input" action="GeneratorServlet">
 	<%
 			int count = 0;
 	%>
@@ -30,7 +30,7 @@
 	<%
 			while (count < courses.size()) {
 	%>
-				<%=courses.get(count).getPrefix()%> <%=courses.get(count).getNum()%> <input type="checkbox" name="checkbox" value="<%=Integer.toString(count)%>" style="margin-bottom:10px;"/><br />
+				<%=courses.get(count).getPrefix()%> <%=courses.get(count).getNum()%> <input type="checkbox" name="coursesTaken" value="<%=Integer.toString(count)%>" style="margin-bottom:10px;"/><br />
 	<%
 				if (((count + 1) % 10)== 0 && count != 0) {
 	%>
@@ -42,23 +42,27 @@
 			}
 	%>
 			</div>
-		<input class="button" type="submit" value="Save Courses" style="margin-top:-100px; margin-left:47%;">
-	</form>
+			<input class="button" type="submit" value="Save Courses" style="margin-top:-100px; margin-left:47%;">
+		</form>
 	</div>
 	<%
-		String c[] = request.getParameterValues("checkbox");
+		request.setAttribute("allCourses", courses);
+		System.out.println("Checkbox.jsp size: " + courses.size());
+		// Grabs values of checkboxes and puts into string array
+		/* String c[] = request.getParameterValues("checkbox");
+		// Checks and makes sure values were grabbed
 		if (c != null) {
 			for (int i = 0; i < c.length; i++) {
-				indices.add(c[i]);
-				%> <%=c[i]%> <%
-			}
+				indices.add(c[i]); */
+				%> <%-- <%=c[i]%> --%> <%
+		/* 	}
 		}
-		session.setAttribute("indices", indices);
+		session.setAttribute("indices", indices); */
 	%>
-	<a href="displayschedules.jsp">
+	<!-- <a href="displayschedules.jsp">
 	<button class="button" id="generate">
 		Generate Course Plans
 	</button>
-	</a>
+	</a> -->
 </body>
 </html>
