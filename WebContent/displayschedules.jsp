@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.HashMap" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<% String userEmail = (String)session.getAttribute("passObj");
+	userEmail = "callisto@usc.edu";%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,7 +15,50 @@
 		<title>Your Generated Schedule</title>
 		
 	</head>
-	<body>
+	<script>
+			var socket;
+			function start() {
+				connectToServer();
+				//return sendMessage();
+			}
+			function connectToServer() {
+				
+				// receive from server and handle 
+				socket = new WebSocket("ws://localhost:8085/NetworkedMidterm/ws");
+				
+				
+				//Print out other users
+				
+			
+				
+				socket.onopen = function(event) {
+					document.getElementById("connectMessage").innerHTML += "Connected!";
+				}
+				
+				socket.onmessage = function(event) {
+					if (event.data != document.mychat.message.value){
+						document.getElementById("userEmail").innerHTML = event.data + " is online!";
+					}
+					else {
+						document.getElementById("userEmail").innerHTML = "online!";
+					}
+				}	
+			
+				socket.onclose = function(event) {
+					document.getElementById("connectMessage").innerHTML += "Disconnected!";
+				}
+				
+			}
+			function sendMessage() {
+				//document.getElementById("userEmail").innerHTML = "change";
+				socket.send(document.mychat.message.value);
+				//document.getElementById("userEmail").innerHTML = "changeAgain";
+				return false;
+			}
+		</script>
+	<body onload = "start()">	
+		
+	
 		<div id="container">
 			<div id="header">
 				<div id="navLinks" class="valign-wrapper">
@@ -77,9 +122,19 @@
 				</table>
 			</div>
 		</div>
+		<form id = "connectForm" name="mychat" onsubmit = "return sendMessage();" >
+			<input type = "text" name = "message" value = <%=userEmail %> />
+			<input type="submit" name="submit" value="Connect with other users" />
+		</form>
+			
 		<div id="buttonSection">
 			<button type="button" id="saveButton" class="btn-large waves-effect waves-light red darken-3">Save</button>
 			<button type="button" id="regenerateButton" class="btn-large waves-effect waves-light red darken-3">Generate another SChedule</button>
 		</div>
+		
+		<p id = "connectMessage"></p><br><br>
+		<p id = "userEmail"></p>
+		
+		
 	</body>
 </html>
