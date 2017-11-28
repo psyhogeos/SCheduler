@@ -4,58 +4,87 @@ body {
   font-size: 20px;
   margin: 0;
   padding: 0;
-  background-image: url('https://admission.usc.edu/images/hdr_FAQ.jpg');
-  background-size: 110%;
-  background-repeat: no-repeat; 
-  background-attachment: fixed;
-  color: white;
-  color: #89160C;
-}
-#container {
-	background-color: #FFFFFF;
+  color: #910B0B;
+  background-color: white;
 }
 #header {
   position: fixed;
   width: 100%;
-  height: 75px;
-  background-color: #3D3D3D;
-  background-color: #910B0B;
+  height: 100px;
+  background-color: #B71C1C;
   z-index: 2;
+  color: #FFFFFF;
+}
+#blurb {
+	color: #910B0B;
+	text-align: center;
+	margin-top: 90px;
+	margin-bottom: 300px;
+	position: absolute;
+	width: 54%;
+	margin-left: 23%;
+}
+h1 {
+	font-size: 50px;
+}
+h3 {
+	font-size: 30px;
 }
 form {
 	position: absolute;
-	margin-left: 40%;
-	margin-top: 200px;
+	margin-left: 25%;
+	margin-top: 850px;
 }
 button {
-	margin-top: 153px;
-	margin-left: 54%;
+	margin-top: -36px;
+	margin-left: 110%;
 	background-color: #910B0B;
 	border: 0px;
 	height: 31px;
 	border-radius: 2px;
+	color: white;
+	width: 300px;
+}
+button:active {
+	color: 
 }
 #button2 {
-	margin-top: 228px;
-	margin-left: 49.3%;
+	margin-top: -31px;
+	margin-left: 110%;
 }
 button:hover {
 	cursor: pointer;
 }
 button img {
+	margin-top: 1px;
 	width: 20px;
 	-webkit-filter: invert(1);
     filter: invert(1);
 }
 .section {
 	width: 100%;
-	height: 515px;
 }
 #section1 {
-	top: 150px;
+	top: 200px;
+	height: 150px;
 	position: relative;
-	height: 590px;
+	margin-bottom: 150px;
 }
 #section2 {
-	
+	top: 500px;
 }
+#generate {
+	margin-left: 83%;
+	margin-top: -70px;
+	background-color: #910B0B;
+	color: white;
+	width: 150px;
+	height: 40px;
+	border-radius: 5px;
+}
+
+
+
+
+
+
