@@ -3,11 +3,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="backend.Course" %>
 <%@ page import="backend.*" %>
-<%
-	ArrayList<ArrayList<ArrayList<Course>>> schedules = (ArrayList<ArrayList<ArrayList<Course>>>) session.getAttribute("schedules");
-	int index = (int)session.getAttribute("scheduleIndex");
-	session.setAttribute("scheduleIndex", index);
-%>
+<%-- <%
+	ArrayList<ArrayList<Course>> schedule = (ArrayList<ArrayList<Course>>) session.getAttribute("schedules");
+%> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -16,22 +14,25 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!--Import materialize.css-->
 		<link rel="stylesheet" type="text/css" href="materialize.css"/>
-		<link rel="stylesheet" type="text/css" href="displayschedules.css">
-		<title>Your Generated Schedule</title>
+		<link rel="stylesheet" type="text/css" href="savedplan.css">
+		<title>Your Saved Schedule</title>
 	</head>
 	<body>
 		<div id="container">
 			<div id="header">
 				<div id="navLinks" class="valign-wrapper">
-					<a id="savedCoursesLink" class="navLink" href="home.html">My Saved Schedule</a>
+					<a id="savedCoursesLink" class="navLink" style="color: #ffdc00">My Saved Schedule</a>
 					<a id="myInfo" class="navLink" href="home.html">My Information</a>
 				</div>
 				<div id="scheduler">
 					<h1 id="schedulerTitle"><span style="color: #e0d500">S</span> heduler<span id="schedulerC" style="color: #e0d500">C</span></h1>
 				</div>
+				<div id="logOutDiv">
+					<a id="logOut" class="logOutLink" href="login.jsp">Log Out</a>
+				</div>
 			</div>
 			<div id="title">
-				Your <span style="color: #e0d500">S</span> hedules<span id="C" style="color: #e0d500">C</span>
+				Your Saved <span style="color: #e0d500">S</span> hedule<span id="C" style="color: #e0d500">C</span>
 			</div>
 			<div id="scheduleContainer" class="z-depth-4">
 				<table id="schedule" class="striped centered responsive-table">
@@ -47,58 +48,42 @@
 					// ArrayList of Schedules
 					//ArrayList<ArrayList<ArrayList<Course> > > schedules = new ArrayList<ArrayList<ArrayList<Course> > >();
 					// Schedule 1
-					//ArrayList<ArrayList<Course> > schedule1 = new ArrayList<ArrayList<Course> >();
+					ArrayList<ArrayList<Course> > schedule1 = new ArrayList<ArrayList<Course> >();
 					// Sem 1 in schedule 1
-					/* ArrayList<Course> sched1sem1 = new ArrayList<Course>();
+					ArrayList<Course> sched1sem1 = new ArrayList<Course>();
 					sched1sem1.add(new Course("CSCI", "350L", 4));
 					sched1sem1.add(new Course("CSCI", "360L", 4));
 					sched1sem1.add(new Course("EE", "364", 4));
-					sched1sem1.add(new Course("GE", "C", 4)); */
-					//schedule1.add(sched1sem1);
+					sched1sem1.add(new Course("GE", "C", 4));
+					schedule1.add(sched1sem1);
 					// Sem 2 in schedule 1
-					/* ArrayList<Course> sched1sem2 = new ArrayList<Course>();
+					ArrayList<Course> sched1sem2 = new ArrayList<Course>();
 					sched1sem2.add(new Course("CSCI", "401", 4));
 					sched1sem2.add(new Course("Tech", "Elec.", 4));
 					sched1sem2.add(new Course("GE", "D", 4));
 					sched1sem2.add(new Course("Tech", "Elec.", 4));
-					schedule1.add(sched1sem2); */
+					schedule1.add(sched1sem2);
 					// Sem 3 in schedule 1
-					/* ArrayList<Course> sched1sem3 = new ArrayList<Course>();
+					ArrayList<Course> sched1sem3 = new ArrayList<Course>();
 					sched1sem3.add(new Course("Req.", "Elec.", 4));
 					sched1sem3.add(new Course("Req.", "Elec.", 4));
 					sched1sem3.add(new Course("Tech", "Elec.", 4));
 					sched1sem3.add(new Course("GE", "D", 4));
-					schedule1.add(sched1sem3); */
+					schedule1.add(sched1sem3);
 					//ArrayList<ArrayList<Course>> schedule = schedules.get(0);
 					//schedules.add(schedule1);					
-					//int numOfSemesters = schedule.size();
+					int numOfSemesters = schedule1.size();
 					//int index = 0;
-					// CODE TO TEST ========================
-					/* HashMap<String, String []> semesterPlans = new HashMap<String, String []>();
-					int numOfSemesters = 3;
-					String [] semesters = {"Spring 2018", "Fall 2018", "Spring 2019", "Fall 2019", "Spring 2020"};
-					String [] s18 = {"CSCI 350L", "CSCI 360L", "EE 364", "GE C"};
-					String [] f18 = {"CSCI 401", "Tech Elec.", "GE D", "Tech Elec."};
-					String [] s19 = {"Req. Elec.", "Req. Elec.", "Tech Elec.", "GE D"};
-					
-					semesterPlans.put("Spring 2018", s18);
-					semesterPlans.put("Fall 2018", f18);
-					semesterPlans.put("Spring 2019", s19); */
-					
-					/* String [] f19 = {"A", "B", "C", "D"};
-					String [] s20 = {"E", "F", "G", "H"}; */
-					/* semesterPlans.put("Fall 2019", f19);
-					semesterPlans.put("Spring 2020", s20); */
 					// CODE TO TEST ========================
 					String [] semesters = {"Spring 2018", "Fall 2018", "Spring 2019", "Fall 2019", "Spring 2020", "Fall 2020", "Spring 2021", "Fall 2021"};
 					
-					for (int i = 0; i < schedules.get(index).size(); i++) {
+					for (int i = 0; i < schedule1.size(); i++) {
 						String current = semesters[i];
 						String delims = "[ ]";
 						String[] tokens = current.split(delims);
 						int maxCourses = 0;
-						for (int j = 0; j < schedules.get(index).size(); j++) {
-							maxCourses = Math.max(schedules.get(index).get(j).size(), maxCourses);
+						for (int j = 0; j < schedule1.size(); j++) {
+							maxCourses = Math.max(schedule1.get(j).size(), maxCourses);
 						}
 						%>
 						<tr>
@@ -110,9 +95,9 @@
 							%>
 							<td style="font-weight:bold" id="scheduleObject"><%= tokens[0] %></td>
 							<% for (int j = 0; j < maxCourses; j++) {
-								if (j < schedules.get(index).get(i).size()) {
-									%><td id="scheduleObject"><%= schedules.get(index).get(i).get(j).getPrefix() %> <%= schedules.get(index).get(i).get(j).getNum() %><br />
-										<font size="2" style="font-style: italic"><%= schedules.get(index).get(i).get(j).getUnits() %> units</font>
+								if (j < schedule1.get(i).size()) {
+									%><td id="scheduleObject"><%= schedule1.get(i).get(j).getPrefix() %> <%= schedule1.get(i).get(j).getNum() %><br />
+										<font size="2" style="font-style: italic"><%= schedule1.get(i).get(j).getUnits() %> units</font>
 									</td><%
 								} else {
 									%> <td></td> <%
@@ -126,23 +111,7 @@
 			</div>
 		</div>
 		<div id="buttonSection">
-			<%
-			if (index == 0) { %>
-				<a href="displayschedules-.jsp" type="button" id="prevButton" class="btn-large waves-effect waves-light red darken-3" style="visibility:hidden;">Previous SChedule</a>
-			<% }
-			else { %>
-				<a href="displayschedules-.jsp" type="button" id="prevButton" class="btn-large waves-effect waves-light red darken-3">Previous SChedule</a>
-			<% }
-			%>
 			<button type="button" id="saveButton" class="btn-large waves-effect waves-light red darken-3">Save</button>
-			<%
-			if (index == 3) { %>
-				<a href="displayschedules+.jsp" type="button" id="nextButton" class="btn-large waves-effect waves-light red darken-3" style="visibility:hidden;">Next SChedule</a>
-			<% }
-			else { %>
-				<a href="displayschedules+.jsp" type="button" id="nextButton" class="btn-large waves-effect waves-light red darken-3">Next SChedule</a>
-			<% }
-			%>
 		</div>
 	</body>
 </html>

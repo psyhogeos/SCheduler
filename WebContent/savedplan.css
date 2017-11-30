@@ -20,16 +20,6 @@ body {
   z-index: 2;
   color: #FFFFFF;
 }
-#title {
-	width: 100%;
-	height: 515px;
-	top: 150px;
-	position: relative;
-	height: 250px;
-	left: 39%;
-	font-size: 40px;
-	font-weight: bold;
-}
 
 #schedulerTitle {
 	position: fixed;
@@ -45,6 +35,17 @@ body {
 	top: 19px;
 }
 
+#title {
+	width: 100%;
+	height: 515px;
+	top: 150px;
+	position: relative;
+	height: 250px;
+	left: 35%;
+	font-size: 40px;
+	font-weight: bold;
+}
+
 #scheduleContainer {
 	position: relative;
 	left: 180px;
@@ -57,25 +58,13 @@ body {
 
 #C {
 	position: relative;
-	right: 168px;
+	right: 148px;
 	top: 12px;
-}
-
-#prevButton {
-	position: relative;
-	left: 180px;
-	top: 70px;
 }
 
 #saveButton {
 	position: relative;
 	left: 360px;
-	top: 70px;
-}
-
-#nextButton {
-	position: relative;
-	left: 570px;
 	top: 70px;
 }
 
@@ -88,6 +77,17 @@ body {
 	top: 35px;
 	background-color: #b71c1c;
 	color: #FFFFFF;
+}
+
+#logOutDiv {
+	position: absolute;
+	bottom: 75px;
+	left: 1220px;
+}
+
+#logOut {
+	color: #e5e5e5;
+	font-size: 13px;
 }
 
 .navLink:hover {

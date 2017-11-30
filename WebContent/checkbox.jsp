@@ -20,6 +20,7 @@
 		// ArrayList<Course> courses = new ArrayList<Course>(40);
 		// int size = courses.size();
 		ArrayList<String> indices = new ArrayList<String>();
+		session.setAttribute("allCourses", courses);
 	%>
 	<div id="check-container">
 		<form method="POST" name="input" action="GeneratorServlet">
@@ -46,7 +47,8 @@
 		</form>
 	</div>
 	<%
-		request.setAttribute("allCourses", courses);
+		session.setAttribute("allCourses", courses);
+		session.setAttribute("scheduleIndex", 0);
 		System.out.println("Checkbox.jsp size: " + courses.size());
 		// Grabs values of checkboxes and puts into string array
 		/* String c[] = request.getParameterValues("checkbox");

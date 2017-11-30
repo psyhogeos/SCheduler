@@ -39,7 +39,7 @@ public class CheckUser extends HttpServlet {
 		        			//Successful match
 		        			request.setAttribute("userEmail", email);
 		        			//response.sendRedirect("input.jsp");
-		        			response.sendRedirect("displayStudent.jsp");
+		        			response.sendRedirect("input.jsp");
 		        		}
 		        		else {
 		        			request.setAttribute("errorMessage", "<font color=\"white\">Invalid password or username</font><br />");
@@ -78,5 +78,3 @@ public class CheckUser extends HttpServlet {
 		//dispatcher.forward(request,response);
 	}
 }
-
-

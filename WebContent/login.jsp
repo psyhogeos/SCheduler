@@ -18,12 +18,14 @@
 		}
 		return true;
 	}
-
 </script>
 </head>
 
 <body>
   <div id="outercontainer">
+  	<div id="scheduler">
+		<h1 id="schedulerTitle"><span style="color: #e0d500">S</span> heduler<span id="schedulerC" style="color: #e0d500">C</span></h1>
+	</div>
     <h3 id="title">LOG IN</h3>
     <form name="login" method="POST" action="CheckUser" onsubmit="return validate();">
       <div class="form-row">

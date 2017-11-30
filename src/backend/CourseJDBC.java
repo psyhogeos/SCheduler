@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class FinalProjectJDBC
@@ -28,6 +29,9 @@ public class CourseJDBC extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String semester = (String)request.getParameter("grad-date");
+		Integer semesterInt = retrieveSemesterInt(semester);
+		request.getSession().setAttribute("semester", semesterInt);
 		// Gets name of the major from input page
 		String majorname = request.getParameter("major");
 		// Removes spaces from the major name
@@ -37,7 +41,6 @@ public class CourseJDBC extends HttpServlet {
 		Connection connectionThree = null;
 		Statement stOne = null;
 		Statement stTwo = null;
-		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			// Get connection
@@ -93,5 +96,30 @@ public class CourseJDBC extends HttpServlet {
 		}
 
 	}
-
+	
+	public Integer retrieveSemesterInt(String gradDate) {
+		Integer semester = null;
+		if(gradDate.equals("Spring 2018")) {
+			semester = 1;
+		}
+		else if(gradDate.equals("Fall 2018")) {
+			semester = 2;
+		}
+		else if(gradDate.equals("Spring 2019")) {
+			semester = 3;
+		}
+		else if(gradDate.equals("Fall 2019")) {
+			semester = 4;
+		}
+		else if(gradDate.equals("Spring 2020")) {
+			semester = 5;
+		}
+		else if(gradDate.equals("Fall 2020")) {
+			semester = 6;
+		}
+		else if(gradDate.equals("Spring 2021")) {
+			semester = 7;
+		}
+		return semester;
+	}
 }
