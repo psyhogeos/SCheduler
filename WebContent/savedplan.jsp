@@ -22,15 +22,13 @@
 			<div id="header">
 				<div id="navLinks" class="valign-wrapper">
 					<a id="savedCoursesLink" class="navLink" style="color: #ffdc00">My Saved Schedule</a>
-					<a id="myInfo" class="navLink" href="home.html">My Information</a>
 				</div>
-				<div id="scheduler">
-					<h1 id="schedulerTitle"><span style="color: #e0d500">S</span> heduler<span id="schedulerC" style="color: #e0d500">C</span></h1>
-				</div>
+				
 				<div id="logOutDiv">
 					<a id="logOut" class="logOutLink" href="login.jsp">Log Out</a>
 				</div>
 			</div>
+			<h1 id="schedulerTitle"><span style="color: #e0d500">S</span> heduler<span id="schedulerC" style="color: #e0d500">C</span></h1>
 			<div id="title">
 				Your Saved <span style="color: #e0d500">S</span> hedule<span id="C" style="color: #e0d500">C</span>
 			</div>
@@ -111,7 +109,7 @@
 			</div>
 		</div>
 		<div id="buttonSection">
-			<button type="button" id="saveButton" class="btn-large waves-effect waves-light red darken-3">Save</button>
+			<a href="input.jsp" type="button" id="saveButton" class="btn-large waves-effect waves-light red darken-3">Generate Another</a>
 		</div>
 	</body>
 </html>

@@ -30,17 +30,20 @@ h1 {
 }
 #schedulerTitle {
 	position: fixed;
-	text-align:center;
-	left: 525px;
-	bottom: 530px;
 	color: #ffffff;
 	font-weight: bold;
+	z-index:3;
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 5px;
+	text-align: center;
+	font-size: 59px;
 }
 
 #schedulerC {
 	position: relative;
-	right: 216px;
-	top: 14px;
+	right: 256px;
+	top: 19px;
 }
 h3 {
 	font-size: 20px;

@@ -41,12 +41,8 @@
 <body>
 	<div id="formerror"></div>
 	<div id="container">
-	<div id="header">
-		<div id="scheduler">
-			<h1 id="schedulerTitle"><span style="color: #e0d500">S</span> heduler<span id="schedulerC" style="color: #e0d500">C</span></h1>
-		</div>
-	</div>
-	
+	<div id="header"></div>
+	<h1 id="schedulerTitle"><span style="color: #e0d500">S</span> heduler<span id="schedulerC" style="color: #e0d500">C</span></h1>
 	<div id="blurb">
 		<h1>Welcome!</h1>
 		<h3>We'd like to learn a little more about you. Enter your major and expected graduation date below.</h3>

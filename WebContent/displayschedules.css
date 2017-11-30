@@ -33,10 +33,13 @@ body {
 
 #schedulerTitle {
 	position: fixed;
-	left: 500px;
-	bottom: 530px;
 	color: #ffffff;
 	font-weight: bold;
+	z-index:3;
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 5px;
+	text-align: center;
 }
 
 #schedulerC {

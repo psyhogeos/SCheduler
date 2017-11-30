@@ -24,13 +24,10 @@
 		<div id="container">
 			<div id="header">
 				<div id="navLinks" class="valign-wrapper">
-					<a id="savedCoursesLink" class="navLink" href="home.html">My Saved Schedule</a>
-					<a id="myInfo" class="navLink" href="home.html">My Information</a>
-				</div>
-				<div id="scheduler">
-					<h1 id="schedulerTitle"><span style="color: #e0d500">S</span> heduler<span id="schedulerC" style="color: #e0d500">C</span></h1>
+					<a id="savedCoursesLink" class="navLink" href="savedplan.jsp">My Saved Schedule</a>
 				</div>
 			</div>
+			<h1 id="schedulerTitle"><span style="color: #e0d500">S</span> heduler<span id="schedulerC" style="color: #e0d500">C</span></h1>
 			<div id="title">
 				Your <span style="color: #e0d500">S</span> hedules<span id="C" style="color: #e0d500">C</span>
 			</div>
