@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="backend.Course" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,57 +13,57 @@
 <body>
 	<div id="header"></div>
 	<div id="title">
-		Enter Your Courses
+		<h3>Enter the courses you have taken below:</h3>
 	</div>
 	<%
-		// ArrayList<Course> courses = (ArrayList<Course>)request.getAttribute("GetCourses");
+		ArrayList<Course> courses = (ArrayList<Course>)request.getAttribute("courses");
 		// ArrayList<Course> courses = new ArrayList<Course>(40);
 		// int size = courses.size();
 		ArrayList<String> indices = new ArrayList<String>();
+		session.setAttribute("allCourses", courses);
 	%>
 	<div id="check-container">
-		<form>
+		<form method="POST" name="input" action="GeneratorServlet">
 	<%
-			for (int i = 0; i < 4; i++) {
+			int count = 0;
 	%>
-				<div class="check">
-					
+			<div class="check">
 	<%
-						for (int j = 0; j < 10; j++) {
-							if ((i+1)*(j+1) >= 40) {
-								
-							}
-							else {
-								// String pre = courses.get((i+1)*(j+1)-1).getPrefix();
-								// String num = courses.get((i+1)*(j+1)-1).getNum();
-		%>
-								Course <%=(i+1)*(j+1)%> <input type="checkbox" name="checkbox" value="<%=Integer.toString((i+1)*(j+1))%>" style="margin-bottom:10px;"/><br />
-								
-	<%						
-							}
-						}
+			while (count < courses.size()) {
 	%>
-				</div>
+				<%=courses.get(count).getPrefix()%> <%=courses.get(count).getNum()%> <input type="checkbox" name="coursesTaken" value="<%=Integer.toString(count)%>" style="margin-bottom:10px;"/><br />
 	<%
+				if (((count + 1) % 10)== 0 && count != 0) {
+	%>
+					</div>
+					<div class="check">
+	<%
+				}
+				count++;
 			}
 	%>
-		<input class="button" type="submit" value="Save Courses" style="margin-top:-100px; margin-left:47%;">
-	</form>
+			</div>
+			<input class="button" type="submit" value="Save Courses" style="margin-top:-100px; margin-left:47%;">
+		</form>
 	</div>
 	<%
-		String c[] = request.getParameterValues("checkbox");
+		request.setAttribute("allCourses", courses);
+		System.out.println("Checkbox.jsp size: " + courses.size());
+		// Grabs values of checkboxes and puts into string array
+		/* String c[] = request.getParameterValues("checkbox");
+		// Checks and makes sure values were grabbed
 		if (c != null) {
 			for (int i = 0; i < c.length; i++) {
-				indices.add(c[i]);
-				%> <%=c[i]%> <%
-			}
+				indices.add(c[i]); */
+				%> <%-- <%=c[i]%> --%> <%
+		/* 	}
 		}
-		session.setAttribute("indices", indices);
+		session.setAttribute("indices", indices); */
 	%>
-	<a href="output.jsp">
+	<!-- <a href="displayschedules.jsp">
 	<button class="button" id="generate">
 		Generate Course Plans
 	</button>
-	</a>
+	</a> -->
 </body>
 </html>
