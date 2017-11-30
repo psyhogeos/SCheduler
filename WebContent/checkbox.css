@@ -18,8 +18,9 @@ body {
 }
 #title {
 	position: absolute;
-	margin-top: -50px;
-	margin-left: 40%;
+	margin-top: -100px;
+	width: 60%;
+	margin-left: 25%;
 	color: #910B0B;
 	font-size: 30px;
 }
